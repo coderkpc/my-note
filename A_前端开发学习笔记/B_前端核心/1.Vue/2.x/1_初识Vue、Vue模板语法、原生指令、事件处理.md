@@ -1,0 +1,460 @@
+## 一、什么叫做框架？什么叫做VUE?
+
+> 框架是一整套的解决方案，大而全，有自己的js语法、ui、网络请求
+> vue 最火
+> angular 淘汰
+> react 最流行的
+>
+> vue是主流的前端三大框架之一
+
+## 二、VUE的概念
+
+> vue是一个构建用户界面的框架(库),它的目标是通过尽可能简单的api实现响应的数据绑定和组合的视图集合 vue自身不是一个全能框架的核心是只关注视图层,因此它非常容易学习，非常容易与其它库或已有项目整合 vue在与相关工具和支持库一起使用时, 也能完美地驱动复杂的单页应用,在之后的课程中,我们会配合webpack来使用
+
+1. 想让Vue工作，就必须创建一个Vue实例，且要传入一个配置对象；
+
+2. root容器里的代码依然符合html规范，只不过混入了一些特殊的Vue语法；
+
+3. root容器里的代码被称为【Vue模板】；
+
+4. Vue实例和容器是一一对应的；
+
+5. 真实开发中只有一个Vue实例，并且会配合着组件一起使用；
+
+6. {{xxx}}中的xxx要写js表达式，且xxx可以自动读取到data中的所有属性；
+
+7. 一旦data中的数据发生改变，那么页面中用到该数据的地方也会自动更新；
+
+   ```js
+   注意区分：js表达式 和 js代码(语句)
+   
+   1.表达式：一个表达式会产生一个值，可以放在任何一个需要值的地方：
+   	(1). a
+   	(2). a+b
+   	(3). demo(1)
+   	(4). x === y ? 'a' : 'b'
+   
+   	2.js代码(语句)
+   	(1). if(){}
+   	(2). for(){}
+   ```
+
+## 三、vue的特点
+
+### 	3.1)响应的数据绑定/响应式编程
+
+> 保持状态和数据的同步
+
+> Vue.js 的核心是一个响应的数据绑定系统，它让数据与 DOM 保持同步非常简单。在使用 jQuery 手工操作 DOM时，我们的代码常常是命令式的、重复的与易错的。 Vue.js 拥抱数据驱动的视图概念。通俗地讲，它意味着我们在普通 HTML 模板中使用特殊的语法将 DOM“绑定”到底层数据。一旦创建了绑定，DOM 将与数据保持同步。 每当修改了数据，DOM 便相应地更新。这样我们应用中的逻辑就几乎都是直接修改数据了，不必与 DOM更新搅在一起。这让我们的代码更容易撰写、理解与维护。
+
+### 		3.2)组件化
+
+> 组件（Component）是 Vue.js 最强大的功能之一。组件可以扩展 HTML 元素，封装可重用的代码。 在较高层面上，组件是自定义元素， Vue.js 的编译器为它添加特殊功能。在有些情况下，组件也可以是原生 HTML 元素的形式，以 is 特性扩展。
+
+### 		3.3)局部刷新应用到了极致
+
+ 
+
+## 四、模板语法
+
+Vue模板语法有2大类：
+
+1. ##### 插值语法：
+
+   功能：用于解析标签体内容。
+
+   写法：{{xxx}}，xxx是js表达式，且可以直接读取到data中的所有属性。
+
+2. ##### 指令语法：
+
+   功能：用于解析标签（包括：标签属性、标签体内容、绑定事件.....）。
+
+   举例：v-bind:href="xxx" 或  简写为 :href="xxx"，xxx同样要写js表达式，
+
+   且可以直接读取到data中的所有属性。
+
+   备注：Vue中有很多的指令，且形式都是：v-????，此处我们只是拿v-bind举个例子。
+
+## 五、指令的概念:
+
+>  表示vue的指令 只有vue才会认识
+>     指令：vue指令 还有自定义指令
+>     指令值：是一个表达式，是一个被引号括起来的表达式（单引号也可以是双引号）
+
+## 六、常见的几种指令：
+
+#### 	1. 事件绑定/事件监听：v-on
+
+> 事件的基本使用：
+>
+> 1.使用v-on:xxx 或 @xxx 绑定事件，其中xxx是事件名；
+>
+> ​	scroll是滚动条的事件，wheel是鼠标滚轮的事件
+>
+> 2.事件的回调需要配置在methods对象中，最终会在vm上；
+>
+> 3.methods中配置的函数，不要用箭头函数！否则this就不是vm了；
+>
+> 4.methods中配置的函数，都是被Vue所管理的函数，this的指向是vm 或 组件实例对象；
+>
+> 5.@click="demo" 和 @click="demo($event)" 效果一致，但后者可以传参；在需要传其他参数的时候，写一个$event可以让vue在解析的时候将事件对象传入
+
+```js
+<div class="out" v-on:click="showOut"> </div>
+简写：
+@click="showIn"
+```
+
+##### 事件修饰符：
+
+> 1.prevent：阻止默认事件（常用）；
+>
+> ```html
+> <a href="http://www.atguigu.com" @click.prevent="showInfo">点我提示信息</a>
+> ```
+>
+> 2.stop：阻止事件冒泡（常用）；
+>
+> ```html
+> <div class="demo1" @click="showInfo">
+> 	<button @click.stop="showInfo">点我提示信息</button>
+> </div>
+> ```
+> 
+> 3.once：事件只触发一次（常用）；
+>
+> ```html
+><button @click.once="showInfo">点我提示信息</button>
+> ```
+> 
+> 4.capture：使用事件的捕获模式；
+>
+> ```html
+><div class="box1" @click.capture="showMsg(1)">
+> 	div1
+> 	<div class="box2" @click="showMsg(2)">
+>    div2
+>  </div>
+>    </div>
+>  ```
+> 
+> 5.self：只有event.target是当前操作的元素时才触发事件；
+>
+> ```html
+><div class="demo1" @click.self="showInfo">
+> <button @click="showInfo">点我提示信息</button>
+> </div>
+>  ```
+> 
+> 6.passive：事件的默认行为立即执行，无需等待事件回调执行完毕；
+>
+> 移动端的滑动屏幕事件用的多
+>
+> ```html
+><ul @wheel.passive="demo" class="list">
+> <li>1</li>
+> <li>2</li>
+>  <li>3</li>
+>  <li>4</li>
+>  </ul>
+>  ```
+
+##### 键盘事件(修饰符)：
+
+> 1.Vue中常用的按键别名：
+> 回车 => enter
+> 删除 => delete (捕获“删除”和“退格”键)
+> 退出 => esc
+> 空格 => space
+> 换行 => tab (特殊，必须配合keydown去使用，因为默认会切换)
+> 上 => up
+> 下 => down
+> 左 => left
+> 右 => right
+>
+> 2.Vue未提供别名的按键，可以使用按键原始的key值去绑定，但注意要转为kebab-case（短横线命名）
+>
+> 3.系统修饰键（用法特殊）：ctrl、alt、shift、meta
+> (1).配合keyup使用：按下修饰键的同时，再按下其他键，随后释放其他键，事件才被触发。
+> (2).配合keydown使用：正常触发事件。
+>
+> ```
+>  @keydown.ctrl.y="showInfo"
+> ```
+>
+> 4.也可以使用keyCode去指定具体的按键（不推荐,已被MDN宣布废弃,因为不同的键盘键码不一定统一) 
+>
+> 5.Vue.config.keyCodes.自定义键名 = 键码，可以去定制按键别名
+>
+> ```html
+> <input type="text" placeholder="按下回车提示输入" @keydown.huiche="showInfo">
+> Vue.config.keyCodes.huiche = 13 //定义了一个别名按键
+> 
+> // console.log(e.key,e.keyCode) //如果不清楚键名和键码 通过这两个获取
+> ```
+>
+> 
+
+#### 	2. 属性绑定/单向数据绑定：v-bind 
+
+> 实现对元素的属性的绑定
+
+```html
+原生的js：	document.getElementById('id').setAttribute(属性名，属性值)
+jQuery: 
+	$('#id').attr(属性名，属性值) 
+	$('#id').attr({属性1：属性值1，属性2：属性值2})
+vue:
+
+<h1 v-bind:yibin="msg">绑定了title属性，鼠标悬浮过来看看</h1>
+缩写：v-bind:属性名  ==> :属性名  相当于是去掉了v-bind 直接用:前缀表示绑定属性
+
+可以把一些要绑定的属性放在一个vue的实例的data属性上  前提是data中要有这个对象
+	<p :class="obj.class" v-text="msg"></p>
+        new Vue({
+            el: "#app",
+            data: {
+                msg: "hello vue2",
+                obj: {
+                    role: "admin",
+                    class: "box"
+                }
+            }
+        })
+	也可以直接把对象名拿去绑定 一次绑定所有属性
+	<p v-bind="obj"></p>
+```
+
+#### 	3. 列表渲染：v-for  
+
+> 可以对数字、数组、对象、字符串等进行循环遍历
+
+```html
+1.遍历数组
+item: 表示遍历过程的每一项元素 元素可能是简单地数据类型也可能是复杂的数据类型
+index: 表示遍历过程的每一项元素的下标/索引
+<h1 v-for="(item, index) in arr" >
+	姓名为：{{item}} 索引为{{index}}
+</h1>
+
+2.遍历对象 
+value：表示遍历过程的每一个属性值
+key：表示遍历过程的每一个属性名
+index：表示遍历过程的每个属性的索引
+<li v-for="(value,key,index) of car" :key="k">
+    {{value}}----{{key}}-----{{index}}
+</li>
+
+3.计数：（用得少）
+count：表示从1开始一直到n
+index:遍历过程的索引 从0开始
+<h1 v-for="(count, index) in 100" >
+ 	当前计数为：{{count}} 索引为：{{index}}
+</h1>
+
+4.遍历字符串（用得少）
+char：表示每个字符
+index：表示遍历过程的每个属性的索引
+<li v-for="(char,index) of str" :key="index">
+    {{char}}-{{index}}
+</li>
+
+
+v-for的作用域：向内，即所有的子元素都可以共享item index arr三个变量
+缩写：（即舍弃index） v-for="item in arr"
+```
+
+##### --key有什么作用？：
+
+1. 虚拟DOM中key的作用：
+
+   key是虚拟DOM对象的标识，当数据发生变化时，Vue会根据【新数据】生成【新的虚拟DOM】, 随后Vue进行【新虚拟DOM】与【旧虚拟DOM】的差异比较，比较规则如下：     
+
+2. 对比规则：
+
+   1. 旧虚拟DOM中找到了与新虚拟DOM相同的key：
+
+      1. 若虚拟DOM中内容没变, 直接使用之前的真实DOM!
+      2. 若虚拟DOM中内容变了, 则生成新的真实DOM，随后替换掉页面中之前的真实DOM。
+
+   2. 旧虚拟DOM中未找到与新虚拟DOM相同的key
+
+      ​	创建新的真实DOM，随后渲染到到页面。       
+
+3. 用index作为key可能会引发的问题：
+
+   1. 若对数据进行：逆序添加、逆序删除等破坏顺序操作:
+
+      ​	会产生没有必要的真实DOM更新 ==> 界面效果没问题, 但效率低。
+
+   2. 如果结构中还包含输入类的DOM：
+
+      ​	会产生错误DOM更新 ==> 界面有问题。
+
+4. 开发中如何选择key?:
+
+   1. 最好使用每条数据的唯一标识作为key, 比如id、手机号、身份证号、学号等唯一值。
+   2. 如果不存在对数据的逆序添加、逆序删除等破坏顺序操作，仅用于渲染列表用于展示，使用index作为key是没有问题的。
+
+#### 4. 条件渲染：v-show 
+
+通过设置内联的css样式来控制元素的显示和隐藏 display:none
+
+1. 写法：v-show="表达式"
+2. 适用于：切换频率较高的场景。
+3. 特点：不展示的DOM元素未被移除，仅仅是使用样式隐藏掉
+
+```html
+<!-- 使用v-show做条件渲染 -->
+<h2 v-show="false">欢迎来到{{name}}</h2>
+<h2 v-show="1 === 1">欢迎来到{{name}}</h2>
+```
+
+
+
+#### 	5. 条件渲染：v-if 
+
+写法：
+
+1. v-if="表达式" 
+2. v-else-if="表达式"
+3. v-else="表达式"
+   - 适用于：切换频率较低的场景。
+   - 特点：不展示的DOM元素直接被移除。
+   - 注意：v-if可以和:v-else-if、v-else一起使用，但要求结构不能被“打断”。
+
+```html
+<!-- 使用v-if做条件渲染 -->
+<div v-if="n === 1">Angular</div>
+<div v-else-if="n === 2">React</div>
+<div v-else-if="n === 3">Vue</div>
+<div v-else>哈哈</div>
+
+<!-- v-if与template的配合使用 在解析的时候template标签会被移除-->
+<template v-if="n === 1">
+    <h2>你好</h2>
+    <h2>尚硅谷</h2>
+    <h2>北京</h2>
+</template>
+```
+
+##### 备注：使用v-if时，元素可能无法获取到，而使用v-show 一定可以获取到。
+
+#### 	6. 数据双向绑定：v-model 
+
+> 绑定：
+> 	1.单向绑定: 将数据绑定到元素上 （数据与元素绑定与之的区别：在于方向，前者的方向是从数据到元素，后者是双向的，即可以从元素到数据也可以从数据到元素）
+>
+> ​	数据只能从data流向页面  
+>
+> ​	model改变的时候view跟着改变 不能反过来
+>
+> ​	2.双向绑定：就是既可以将数据绑定到元素上，也可以将元素上的值绑定到数据上（所以**双向绑定仅仅适用于表单类的标签**）==>即数据改变页面元素值改变，元素值改变时数据也改变、
+>
+> ​	数据不仅能从data流向页面，还可以从页面流向data 
+>
+> ​	model改变的时候view跟着改变 view改变的时候model也跟着改变
+
+```html
+v-model:value 可以简写为 v-model，因为v-model默认收集的就是value值
+<input v-model="formData.name" placeholder="请输入用户名">
+<input type="password" v-model="formData.pwd" placeholder="请输入密码">
+```
+
+**	双向绑定的原理**：
+
+​	1.利用v-bind绑定数据    
+
+​	2.利用v-on:input 监听数据变化 变化之后重新赋值 调用渲染页面的函数 将虚拟dom渲染成真实dom
+
+```jsx
+<input type="text" :value="msg" v-on:input="handleInput" />
+<input type="text" v-model="msg" /> //等价于上面
+
+new Vue({
+    el: "#app",
+    data: {
+        msg: "数据绑定"
+    },
+    methods: {
+        handleInput(e) {
+            console.log(1);
+            this.msg = e.target.value
+        }
+    }
+})
+```
+
+#### 	7. 样式绑定：style/class
+
+###### ① 绑定内联样式 style
+
+CSS样式名要用驼峰式 (camelCase) 或短横线分隔 (kebab-case，记得用引号括起来) 来命名 
+
+```html
+<!-- 普通内联样式 -->
+<div style="background-color: pink;color: red;">style绑定样式</div>
+<!-- 通过vbind以对象的方式一次绑定多个样式 -->
+
+<!-- 绑定style样式--对象写法 -->
+<div class="basic" :style="styleObj">{{name}}</div>
+<!-- 能把对象放这但是不太好 -->
+<div :style="{'background-color': 'pink',color: 'red'}">style绑定样式</div>
+
+<!-- 绑定style样式--数组写法  当一次要绑定多个样式数据的对象时使用 -->
+<div class="basic" :style="styleArr">{{name}}</div>
+```
+
+###### ② 绑定 Class
+
+```html
+<!-- 绑定class样式--字符串写法，适用于：样式的类名不确定，需要动态指定 -->
+<div class="basic" :class="mood" @click="changeMood">{{name}}</div> <!-- 最终会生成class="basic mood"(Vue在解析的过程中会合并类名 )  -->
+
+<!-- 绑定class样式--数组写法，适用于：要绑定的样式个数不确定、名字也不确定 -->
+<div class="basic" :class="classArr">{{name}}</div>
+<!-- 也可以直接写一个数组在这 带引号就直接当字符串用 不带当data中的变量用  -->
+<p :class="['bg','color','active']">属性绑定样式</p>
+
+<!-- 绑定class样式--对象写法，
+适用于：要绑定的样式个数确定、名字也确定，但要动态决定用不用 -->
+<div class="basic" :class="classObj">{{name}}</div>
+<!--也可以直接写个对象 value为true的时候 key的类名会被添加 但是很繁琐不便管理-->
+<div class="basic" :class="{bg:true,color:false}">{{name}}</div>
+```
+
+###### eg: v-if  与 v-show 的区别：
+
+>1、 v-if在false的时候连同代码都从文档流移除掉。
+>    v-show在false的时候，元素还在，只是样式变成了display:none
+>
+>2、 v-if:性能更差，安全性更高 通常用于涉密的场景
+>    v-show:性能更优，但是安全性更低 通常用于需要频繁在显式于隐藏之间切换的场景（比如：菜单）
+>    但是通常，v-if和v-show我们是混用的。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
