@@ -78,11 +78,13 @@
 > 3.要在组件的componentWillUnmount中取消订阅
 >
 > ```js
-> //下载: npm install pubsub-js --save
+> //下载: 
+> npm install pubsub-js --save
 > //使用举例
 > 1)	import PubSub from 'pubsub-js' //引入
-> 2)	PubSub.subscribe('delete', function(data){ }); //订阅
+> 2)	PubSub.subscribe('delete', function(data){ }); //订阅 返回一个订阅标识
 > 3)	PubSub.publish('delete', data) //发布消息
+> 4)  PubSub.unsubscribe(this.token) //取消订阅 通过订阅时的标识来取消订阅
 > //*------------------------------使用----------------------------------------------------
 > 	componentDidMount(){
 > 		this.token = PubSub.subscribe('atguigu',(_,stateObj)=>{
@@ -111,7 +113,7 @@
 
 ### 3. 消息订阅与发布机制 --->  工具库: mitt
 
->这是本人后来在githyb中找到并应用在项目代码中的,此工具库代码量特别少,可以阅读源码,会有很大好处
+>这是本人后来在github中找到并应用在项目代码中的,此工具库代码量特别少,可以阅读源码,会有很大好处
 >
 >此方法用的是[`mitt`]实现,其实本质上就是注册一个全局变量进行监听 --> [mitt源码地址](https://github.com/developit/mitt)
 >

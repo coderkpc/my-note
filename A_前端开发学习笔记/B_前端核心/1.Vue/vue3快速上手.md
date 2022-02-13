@@ -1,3 +1,5 @@
+[TOC]
+
 # Vue3快速上手
 
 <img src="https://user-images.githubusercontent.com/499550/93624428-53932780-f9ae-11ea-8d16-af949e16a09f.png" style="width:200px" />
@@ -299,6 +301,13 @@ npm run dev
 
   - 监视reactive定义的响应式数据时：oldValue无法正确获取、强制开启了深度监视（deep配置失效）。
   - 监视reactive定义的响应式数据中的某个属性时。这个属性依旧是一个对象，要监视这个对象的属性是否被修改时，则需要写上`deep:true`
+  - 要注意的点
+  - 如果用ref定义了一个响应式的基本数据类型，不用value，直接把这个ref对象交给watch就能实现监视的效果
+  
+  - 如果用**ref用定义了一个响应式的对象**，虽然说数据是响应的，但是想要用watch监视这个对象的话，有两种解决办法：
+    - 一是用watch监视`person.value`，而不是person，如果不加value的话，watch监视的是value这个属性，而value是一个Proxy对象，只有整个被替换了才能被监视到
+    - 二是用watch对person进行深度监视，`deep：true`
+  
   
   ```js
   //情况一：监视ref定义的响应式数据
@@ -332,7 +341,8 @@ npm run dev
   //特殊情况
   watch(()=>person.job,(newValue,oldValue)=>{
       console.log('person的job变化了',newValue,oldValue)
-  },{deep:true}) //此处由于监视的是reactive素定义的对象中的某个属性，所以deep配置有效，但是oldVal的获取还是有问题
+  },{deep:true}) 
+  //此处由于监视的是reactive素定义的对象中的某个属性，所以deep配置有效，但是oldVal的获取还是有问题
   ```
 
 ### 3.watchEffect函数
@@ -357,45 +367,15 @@ npm run dev
 
 ## 8.生命周期
 
-<div style="border:1px solid black;width:380px;float:left;margin-right:20px;"><strong>vue2.x的生命周期</strong><img src="https://cn.vuejs.org/images/lifecycle.png" alt="lifecycle_2" style="zoom:33%;width:1200px" /></div><div style="border:1px solid black;width:510px;height:985px;float:left"><strong>vue3.0的生命周期</strong><img src="https://v3.cn.vuejs.org/images/lifecycle.svg" alt="lifecycle_2" style="zoom:33%;width:2500px" /></div>
+### 	① vue2的生命周期
+
+#### ![img](https://cn.vuejs.org/images/lifecycle.png)
 
 
 
+### 	② vue3的生命周期
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1
+![img](https://v3.cn.vuejs.org/images/lifecycle.svg)
 
 - Vue3.0中可以继续使用Vue2.x中的生命周期钩子，但有有两个被更名：
   - ```beforeDestroy```改名为 ```beforeUnmount```
@@ -418,8 +398,6 @@ npm run dev
 
 - 自定义hook的优势: 复用代码, 让setup中的逻辑更清楚易懂。
 
-
-
 ## 10.toRef
 
 - 作用：创建一个 ref 对象，其value值指向另一个对象中的某个属性。
@@ -427,7 +405,15 @@ npm run dev
 - 应用:   要将响应式对象中的某个属性单独提供给外部使用时。
 
 
-- 扩展：```toRefs``` 与```toRef```功能一致，但可以批量创建多个 ref 对象，语法：```toRefs(person)```
+- 扩展：```toRefs``` 与```toRef```功能一致，但可以批量创建多个 ref 对象
+
+  - 语法：`toRefs(person)`
+  - 在导出的时候可以用扩展运算符  `...toRefs(Person)`
+
+
+> 为什么不能直接用ref把对象的属性放进去呢？
+
+​	答：那样的话，生成的新的ref对象，对原对象的属性没有联系，数据可以是响应式的也可以改，但是终究改的都不是原对象
 
 
 # 三、其它 Composition API
@@ -435,7 +421,10 @@ npm run dev
 ## 1.shallowReactive 与 shallowRef
 
 - shallowReactive：只处理对象最外层属性的响应式（浅响应式）。
+
 - shallowRef：只处理基本数据类型的响应式, 不进行对象的响应式处理。
+
+  > ref和shallowRef的区别: ref处理基本数据类型的响应式，但是你传入对象的话，内部会去调reactive处理成响应式，shallowRef就算传对象也不进行响应式处理。只有把整个对象替换了，shallowRef定义的对象才会变成响应式
 
 - 什么时候使用?
   -  如果有一个对象数据，结构比较深, 但变化时只是外层属性变化 ===> shallowReactive。
@@ -444,13 +433,26 @@ npm run dev
 ## 2.readonly 与 shallowReadonly
 
 - readonly: 让一个响应式数据变为只读的（深只读）。
+
 - shallowReadonly：让一个响应式数据变为只读的（浅只读）。
+
 - 应用场景: 不希望数据被修改时。
+
+- ```
+  let person = reactive({
+        name: "张三",
+        age: 19,
+        job: {
+          salary: 20000
+        }
+      })
+      person = shallowReadonly(person)
+  ```
 
 ## 3.toRaw 与 markRaw
 
 - toRaw：
-  - 作用：将一个由```reactive```生成的<strong style="color:orange">响应式对象</strong>转为<strong style="color:orange">普通对象</strong>。
+  - 作用：将一个由`reactive`生成的<strong style="color:orange">响应式对象</strong>转为<strong style="color:orange">普通对象</strong>。
   - 使用场景：用于读取响应式对象对应的普通对象，对这个普通对象的所有操作，不会引起页面更新。
 - markRaw：
   - 作用：标记一个对象，使其永远不会再成为响应式对象。
@@ -542,8 +544,12 @@ npm run dev
 ## 6.响应式数据的判断
 
 - isRef: 检查一个值是否为一个 ref 对象
+  - ref底层用的是Object.defineProperty实现的
+
 - isReactive: 检查一个对象是否是由 `reactive` 创建的响应式代理
 - isReadonly: 检查一个对象是否是由 `readonly` 创建的只读代理
+  - 虽然只读了，但是返回的还是一个Proxy代理对象
+
 - isProxy: 检查一个对象是否是由 `reactive` 或者 `readonly` 方法创建的代理
 
 # 四、Composition API 的优势
@@ -552,48 +558,18 @@ npm run dev
 
 使用传统OptionsAPI中，新增或者修改一个需求，就需要分别在data，methods，computed里修改 。
 
-<div style="width:600px;height:370px;overflow:hidden;float:left">
-    <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f84e4e2c02424d9a99862ade0a2e4114~tplv-k3u1fbpfcp-watermark.image" style="width:600px;float:left" />
-</div>
-<div style="width:300px;height:370px;overflow:hidden;float:left">
-    <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e5ac7e20d1784887a826f6360768a368~tplv-k3u1fbpfcp-watermark.image" style="zoom:50%;width:560px;left" /> 
-</div>
+![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f84e4e2c02424d9a99862ade0a2e4114~tplv-k3u1fbpfcp-watermark.image)
 
-
-
-
-
-
-
-
-
-
-
-
+![img](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e5ac7e20d1784887a826f6360768a368~tplv-k3u1fbpfcp-watermark.image)
 
 
 
 ## 2.Composition API 的优势
 
 我们可以更加优雅的组织我们的代码，函数。让相关功能的代码更加有序的组织在一起。
+![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bc0be8211fc54b6c941c036791ba4efe~tplv-k3u1fbpfcp-watermark.image)
 
-<div style="width:500px;height:340px;overflow:hidden;float:left">
-    <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bc0be8211fc54b6c941c036791ba4efe~tplv-k3u1fbpfcp-watermark.image"style="height:360px"/>
-</div>
-<div style="width:430px;height:340px;overflow:hidden;float:left">
-    <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6cc55165c0e34069a75fe36f8712eb80~tplv-k3u1fbpfcp-watermark.image"style="height:360px"/>
-</div>
-
-
-
-
-
-
-
-
-
-
-
+![img](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6cc55165c0e34069a75fe36f8712eb80~tplv-k3u1fbpfcp-watermark.image)
 
 
 # 五、新的组件
@@ -608,6 +584,8 @@ npm run dev
 
 - 什么是Teleport？—— `Teleport` 是一种能够将我们的<strong style="color:#DD5145">组件html结构</strong>移动到指定位置的技术。
 
+  - 移动位置可以直接写html元素：html、body、css选择器
+  
   ```vue
   <teleport to="移动位置">
   	<div v-if="isShow" class="mask">
@@ -625,15 +603,17 @@ npm run dev
 
 - 使用步骤：
 
-  - 异步引入组件
+  - 异步引入组件（动态引入）
 
     ```js
     import {defineAsyncComponent} from 'vue'
     const Child = defineAsyncComponent(()=>import('./components/Child.vue'))
     ```
 
-  - 使用```Suspense```包裹组件，并配置好```default``` 与 ```fallback```
+  - 使用`Suspense`包裹组件，并配置好```default``` 与 `fallback`
 
+    - default和fallback是插槽。default插槽放真正展示的组件，fallback是组件还没出来的时候展示的内容
+    
     ```vue
     <template>
     	<div class="app">
@@ -649,6 +629,22 @@ npm run dev
     	</div>
     </template>
     ```
+
+​		
+
+> 只有用了异步引入的组件，才能把setup写成一个async函数，并返回一个Promise实例
+
+```js
+async setup(){
+    let sum = ref(0)
+    let p = new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            resolve({sum})
+        },3000)
+    })
+    return await p
+}
+```
 
 # 六、其他
 
@@ -720,7 +716,12 @@ npm run dev
     }
     ```
 
-- <strong style="color:#DD5145">移除</strong>keyCode作为 v-on 的修饰符，同时也不再支持```config.keyCodes```
+- <strong style="color:#DD5145">移除</strong>keyCode作为 v-on 的修饰符，同时也不再支持```config.keyCodes``` (兼容性差)
+
+  - ```js
+    Vue.config.keyCodes.huiche = 13
+    @keyup.13='回调函数'
+    ```
 
 - <strong style="color:#DD5145">移除</strong>```v-on.native```修饰符
 
@@ -733,7 +734,7 @@ npm run dev
     />
     ```
 
-  - 子组件中声明自定义事件
+  - 子组件中声明自定义事件，没声明的就当做原生事件！
 
     ```vue
     <script>
@@ -747,4 +748,58 @@ npm run dev
 
   > 过滤器虽然这看起来很方便，但它需要一个自定义语法，打破大括号内表达式是 “只是 JavaScript” 的假设，这不仅有学习成本，而且有实现成本！建议用方法调用或计算属性去替换过滤器。
 
-- ......
+## 3.路由
+
+```js
+import { createRouter, createWebHashHistory } from 'vue-router'
+
+const routes = [
+  {
+    path: '/home',
+    name: 'Home',
+    component: () => import('../views/Home.vue')
+  },
+  {
+    path: '/about',
+    name: 'About',
+    //异步组件
+    component: () => import('../views/About.vue')
+  }
+]
+
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes
+})
+
+export default router
+```
+
+### main.js
+
+```js
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+const app = createApp(App)
+app.use(router)
+app.mount('#app')
+```
+
+## 4.vuex
+
+```js
+import { createStore } from 'vuex'
+
+export default createStore({
+  state: {
+  },
+  mutations: {
+  },
+  actions: {
+  },
+  modules: {
+  }
+})
+```
+

@@ -1,3 +1,5 @@
+[TOC]
+
 ## 一、原生过渡动画
 
 直接使用transition标签 定义v-开头的css动画样式 即可
@@ -112,7 +114,7 @@ in-out先进后出 out-in先出后进
 
 > https://animate.style/
 
-## 三.钩子动画函数
+## 五、钩子动画函数
 
 ##### 	3.1)代码解析：
 
@@ -164,7 +166,7 @@ let vm = new Vue({
 
 ```
 
-## 四.列表动画
+## 五、列表动画
 
 ```html
 <!DOCTYPE html>
@@ -268,7 +270,7 @@ let vm = new Vue({
 
 ```
 
-## 五、Vue CLI
+## 六、Vue CLI
 
 ### 1. 项目结构：
 
@@ -314,7 +316,7 @@ let vm = new Vue({
 - 采用的是CommonJS规范暴露模块，因为这是webpack的配置，而webpack基于Nodejs，Nodejs基于CommonJS规范
 - 修改vue.config.js一定要重新启动服务，配置项要么就不写，要写就写好写清楚
 
-## 六、ref属性和props配置
+## 七、ref属性和props配置
 
 ### 1. [ref属性](https://cn.vuejs.org/v2/api/#ref)
 
@@ -323,8 +325,8 @@ let vm = new Vue({
 - 被用来给元素或子组件注册引用信息（id的替代者）
 - 应用在html标签上获取的是真实DOM元素，应用在组件标签上是组件实例对象（vc）
 - 使用方式：
-    1. 打标识：```<h1 ref="xxx">.....</h1>``` 或 ```<School ref="xxx"></School>```
-    2. 获取：```this.$refs.xxx```
+    1. 打标识：`<h1 ref="xxx">.....</h1>` 或 `<School ref="xxx"></School>`
+    2. 获取：`this.$refs.xxx`
 
 ### [2. props配置](https://cn.vuejs.org/v2/api/#props)
 - 功能：用于接收来自父组件的数据
@@ -350,12 +352,11 @@ let vm = new Vue({
         }
         ```
     ```
-    
-    > 备注：props是只读的，Vue底层会监测你对props的修改，如果进行了修改，就会发出警告，若业务需求确实需要修改，那么请复制props的内容到data中一份，然后去修改data中的数据。
+    备注：props是只读的，Vue底层会监测你对props的修改，如果进行了修改，就会发出警告，若业务需求确实需要修改，那么请复制props的内容到data中一份，然后去修改data中的数据。
     ```
 
 
-## 七、Vue提供的一些机制和API
+## 八、Vue提供的一些机制和API
 
 ### 1. [mixin](https://cn.vuejs.org/v2/guide/mixins.html)
 
@@ -421,7 +422,7 @@ let vm = new Vue({
 2. 作用：在下一次 DOM 更新结束后执行其指定的回调。
 3. 什么时候用：当改变数据后，要基于更新后的新DOM进行某些操作时，要在nextTick所指定的回调函数中执行。
 
-## 八、 组件化编码流程
+## 九、 组件化编码流程
 
 1. 拆分静态组件：组件要按照功能点拆分，命名不要与html元素冲突。
 2. 实现动态组件：考虑好数据的存放位置，数据是一个组件在用，还是一些组件在用：

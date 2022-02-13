@@ -1,3 +1,5 @@
+[TOC]
+
 # 一、rem适配方案
 
 ## 1. 直接引入 rem.js 文件 
@@ -430,12 +432,6 @@ const About = () => import(/* webpackChunkName: "about" */ './views/About.vue')
 2. 同级新建一个modules文件夹，每个模块的路由规则单独写成一个js文件，`router/modules/home.js`，写成一个数组然后==默认暴露==出去
 3. 在index.js中直接引入，通过扩展运算符...展开到route数组中，再将routes数组挂载到路由配置里
 
- 
-
-
-
-# 四、vue-cli3 配置
-
 # 四、vue-cli3 配置
 
 ## 1. vue-cli3中配置生成环境和开发环境
@@ -500,7 +496,7 @@ const http = axios.create({
 
 #### 方法一   
 
-在vue.config.js中配置devServer的proxy属性
+在`vue.config.js`中配置devServer的proxy属性
 
 ​	在vue.config.js中添加如下配置：
 

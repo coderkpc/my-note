@@ -1,3 +1,5 @@
+[TOC]
+
 ## 一、回顾数据代理知识点
 
 Vue2中，主要通过 `Object.defineProperty() `来实现数据代理
