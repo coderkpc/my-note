@@ -514,4 +514,3 @@
 >1. BrowserRouter没有任何影响，因为state保存在history对象中。
 >
 >2. HashRouter`刷新后会导致路由state参数的丢失！！！`
-

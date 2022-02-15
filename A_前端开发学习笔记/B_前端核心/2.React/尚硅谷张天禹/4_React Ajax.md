@@ -33,23 +33,23 @@
    const {createProxyMiddleware} = require('http-proxy-middleware')
    //const proxy = require('http-proxy-middleware')
    module.exports = function(app) {
-     app.use(
-       createProxyMiddleware('/api1', {  //api1是需要转发的请求(所有带有/api1前缀的请求都会转发给5000)
-         target: 'http://localhost:5000', //配置转发目标地址(能返回数据的服务器地址)
-         changeOrigin: true, //控制服务器接收到的请求头中host字段的值
-         /*
+       app.use(
+           createProxyMiddleware('/api1', {  //api1是需要转发的请求(所有带有/api1前缀的请求都会转发给5000)
+               target: 'http://localhost:5000', //配置转发目标地址(能返回数据的服务器地址)
+               changeOrigin: true, //控制服务器接收到的请求头中host字段的值
+               /*
          	changeOrigin设置为true时，服务器收到的请求头中的host为：localhost:5000
          	changeOrigin设置为false时，服务器收到的请求头中的host为：localhost:3000
-         	changeOrigin默认值为false，但我们一般将changeOrigin值设为true
+           changeOrigin默认值为false，但我们一般将changeOrigin值设为true
          */
-         pathRewrite: {'^/api1': ''} //去除请求前缀，保证交给后台服务器的是正常请求地址(必须配置)
-       }),
-       createProxyMiddleware('/api2', { 
-         target: 'http://localhost:5001',
-         changeOrigin: true,
-         pathRewrite: {'^/api2': ''}
-       })
-     )
+               pathRewrite: {'^/api1': ''} //去除请求前缀，保证交给后台服务器的是正常请求地址(必须配置)
+           }),
+           createProxyMiddleware('/api2', { 
+               target: 'http://localhost:5001',
+               changeOrigin: true,
+               pathRewrite: {'^/api2': ''}
+           })
+       )
    }
    ```
 
@@ -86,29 +86,29 @@
 > 3)	PubSub.publish('delete', data) //发布消息
 > 4)  PubSub.unsubscribe(this.token) //取消订阅 通过订阅时的标识来取消订阅
 > //*------------------------------使用----------------------------------------------------
-> 	componentDidMount(){
-> 		this.token = PubSub.subscribe('atguigu',(_,stateObj)=>{
-> 			this.setState(stateObj)
-> 		})
-> 	}
+> componentDidMount(){
+>     this.token = PubSub.subscribe('atguigu',(_,stateObj)=>{
+>         this.setState(stateObj)
+>     })
+> }
 > 
-> 	componentWillUnmount(){
-> 		PubSub.unsubscribe(this.token)
-> 	}
+> componentWillUnmount(){
+>     PubSub.unsubscribe(this.token)
+> }
 > //----------------------------------使用---------------------------------------------------
-> 		//发送请求前通知List更新状态
-> 		PubSub.publish('atguigu',{isFirst:false,isLoading:true})
-> 		//发送网络请求---使用fetch发送（优化）
-> 		try {
-> 			const response= await fetch(`/api1/search/users2?q=${keyWord}`)
-> 			const data = await response.json()
-> 			console.log(data);
-> 			PubSub.publish('atguigu',{isLoading:false,users:data.items})
-> 		} catch (error) {
-> 			console.log('请求出错',error);
-> 			PubSub.publish('atguigu',{isLoading:false,err:error.message})
-> 		}
-> 	}
+> //发送请求前通知List更新状态
+> PubSub.publish('atguigu',{isFirst:false,isLoading:true})
+> //发送网络请求---使用fetch发送（优化）
+> try {
+>     const response= await fetch(`/api1/search/users2?q=${keyWord}`)
+>     const data = await response.json()
+>     console.log(data);
+>     PubSub.publish('atguigu',{isLoading:false,users:data.items})
+> } catch (error) {
+>     console.log('请求出错',error);
+>     PubSub.publish('atguigu',{isLoading:false,err:error.message})
+> }
+> }
 > ```
 
 ### 3. 消息订阅与发布机制 --->  工具库: mitt
@@ -135,29 +135,29 @@
 > //此处声明,将其变为全局变量
 > const eventBus = mitt();
 > export { eventBus }
-> ---------------- 发送值的组件(要修改别人的组件)  ---------------------
-> //导入共有变量
-> import { eventBus } from '~/utils';
->   <a
->   onClick={() => {
-> 	//延迟发送是本人此之前有一个跳转动作,跳转到接收方组件
->     // 防止修改了值的时候但是接收组件未注册  正常情况直接发送即可     
->     //setTimeout(() => {
->     // eventBus.emit('foo', data);
->     //}, 100);
->     eventBus.emit('foo', data);    
->    }}
->   />;
+>     ---------------- 发送值的组件(要修改别人的组件)  ---------------------
+>         //导入共有变量
+>         import { eventBus } from '~/utils';
+> <a
+>     onClick={() => {
+>         //延迟发送是本人此之前有一个跳转动作,跳转到接收方组件
+>         // 防止修改了值的时候但是接收组件未注册  正常情况直接发送即可     
+>         //setTimeout(() => {
+>         // eventBus.emit('foo', data);
+>         //}, 100);
+>         eventBus.emit('foo', data);    
+>     }}
+>     />;
 >
 > ------------------ 接受方组件(接受发送方的组件)  -------------------------------------
 >
-> const Search: FC<IProps> = (props) => {
->   useEffect(() => {
->     //替换为mitt写法,此时已经接收到了
->     eventBus.on('foo', (searchParams) => {console.log('接受到值了',searchParams) }
->     });
->   }, []);
-> } 
+>     const Search: FC<IProps> = (props) => {
+>         useEffect(() => {
+>             //替换为mitt写法,此时已经接收到了
+>             eventBus.on('foo', (searchParams) => {console.log('接受到值了',searchParams) }
+>                         });
+>         }, []);
+>     } 
 > ```
 >
 >3. mitt源码
@@ -169,35 +169,35 @@
 > // and should not return a value
 > export type Handler<T = unknown> = (event: T) => void;
 > export type WildcardHandler<T = Record<string, unknown>> = (
->   type: keyof T,
->   event: T[keyof T]
+> type: keyof T,
+>     event: T[keyof T]
 > ) => void;
 >
 > // An array of all currently registered event handlers for a type
 > export type EventHandlerList<T = unknown> = Array<Handler<T>>;
 > export type WildCardEventHandlerList<T = Record<string, unknown>> = Array<
->   WildcardHandler<T>
+>     WildcardHandler<T>
 > >;
 >
 > // A map of event types and their corresponding event handlers.
 > export type EventHandlerMap<Events extends Record<EventType, unknown>> = Map<
->   keyof Events | '*',
->   EventHandlerList<Events[keyof Events]> | WildCardEventHandlerList<Events>
+>     keyof Events | '*',
+>     EventHandlerList<Events[keyof Events]> | WildCardEventHandlerList<Events>
 > >;
 >
 > export interface Emitter<Events extends Record<EventType, unknown>> {
->   all: EventHandlerMap<Events>;
+>     all: EventHandlerMap<Events>;
 >
->   on: (<Key extends keyof Events>(type: Key, handler: Handler<Events[Key]>) => void) & ((type: '*', handler: WildcardHandler<Events>) => void);
+>     on: (<Key extends keyof Events>(type: Key, handler: Handler<Events[Key]>) => void) & ((type: '*', handler: WildcardHandler<Events>) => void);
 >
->   off: (<Key extends keyof Events>(
->     type: Key,
->     handler?: Handler<Events[Key]>
->   ) => void) & ((type: '*', handler: WildcardHandler<Events>) => void);
+>                                                                                           off: (<Key extends keyof Events>(
+>                                                                                           type: Key,
+>                                                                                           handler?: Handler<Events[Key]>
+>         ) => void) & ((type: '*', handler: WildcardHandler<Events>) => void);
 >
->   emit: (<Key extends keyof Events>(type: Key, event: Events[Key]) => void) & (<Key extends keyof Events>(
->     type: undefined extends Events[Key] ? Key : never
->   ) => void);
+>                       emit: (<Key extends keyof Events>(type: Key, event: Events[Key]) => void) & (<Key extends keyof Events>(
+>                                                                                                    type: undefined extends Events[Key] ? Key : never
+>         ) => void);
 > }
 >
 > /**
@@ -206,53 +206,53 @@
 >  * @returns {Mitt}
 >  */
 > export default function mitt<Events extends Record<EventType, unknown>>(
->   all?: EventHandlerMap<Events>
+> all?: EventHandlerMap<Events>
 > ): Emitter<Events> {
->   type GenericEventHandler =
+>     type GenericEventHandler =
 >     | Handler<Events[keyof Events]>
 >     | WildcardHandler<Events>;
->   all = all || new Map();
+>     all = all || new Map();
 >
->   return {
->     /**
+>     return {
+>         /**
 >      * A Map of event names to registered handler functions.
 >      */
->     all,
+>         all,
 >
->     /**
+>         /**
 >      * Register an event handler for the given type.
 >      * @param {string|symbol} type Type of event to listen for, or `'*'` for all events
 >      * @param {Function} handler Function to call in response to given event
 >      * @memberOf mitt
 >      */
->     on<Key extends keyof Events>(type: Key, handler: GenericEventHandler) {
->       const handlers: Array<GenericEventHandler> | undefined = all!.get(type);
->       if (handlers) {
->         handlers.push(handler);
->       } else {
->         all!.set(type, [handler] as EventHandlerList<Events[keyof Events]>);
->       }
->     },
+>         on<Key extends keyof Events>(type: Key, handler: GenericEventHandler) {
+>             const handlers: Array<GenericEventHandler> | undefined = all!.get(type);
+>             if (handlers) {
+>                 handlers.push(handler);
+>             } else {
+>                 all!.set(type, [handler] as EventHandlerList<Events[keyof Events]>);
+>             }
+>         },
 >
->     /**
+>             /**
 >      * Remove an event handler for the given type.
 >      * If `handler` is omitted, all handlers of the given type are removed.
 >      * @param {string|symbol} type Type of event to unregister `handler` from, or `'*'`
 >      * @param {Function} [handler] Handler function to remove
 >      * @memberOf mitt
 >      */
->     off<Key extends keyof Events>(type: Key, handler?: GenericEventHandler) {
->       const handlers: Array<GenericEventHandler> | undefined = all!.get(type);
->       if (handlers) {
->         if (handler) {
->           handlers.splice(handlers.indexOf(handler) >>> 0, 1);
->         } else {
->           all!.set(type, []);
->         }
->       }
->     },
+>             off<Key extends keyof Events>(type: Key, handler?: GenericEventHandler) {
+>                 const handlers: Array<GenericEventHandler> | undefined = all!.get(type);
+>                 if (handlers) {
+>                     if (handler) {
+>                         handlers.splice(handlers.indexOf(handler) >>> 0, 1);
+>                     } else {
+>                         all!.set(type, []);
+>                     }
+>                 }
+>             },
 >
->     /**
+>                 /**
 >      * Invoke all handlers for the given type.
 >      * If present, `'*'` handlers are invoked after type-matched handlers.
 >      *
@@ -262,26 +262,26 @@
 >      * @param {Any} [evt] Any value (object is recommended and powerful), passed to each handler
 >      * @memberOf mitt
 >      */
->     emit<Key extends keyof Events>(type: Key, evt?: Events[Key]) {
->       let handlers = all!.get(type);
->       if (handlers) {
->         (handlers as EventHandlerList<Events[keyof Events]>)
->           .slice()
->           .map((handler) => {
->             handler(evt!);
->           });
->       }
+>                 emit<Key extends keyof Events>(type: Key, evt?: Events[Key]) {
+>                     let handlers = all!.get(type);
+>                     if (handlers) {
+>                         (handlers as EventHandlerList<Events[keyof Events]>)
+>                             .slice()
+>                             .map((handler) => {
+>                             handler(evt!);
+>                         });
+>                     }
 >
->       handlers = all!.get('*');
->       if (handlers) {
->         (handlers as WildCardEventHandlerList<Events>)
->           .slice()
->           .map((handler) => {
->             handler(type, evt!);
->           });
->       }
->     },
->   };
+>                     handlers = all!.get('*');
+>                     if (handlers) {
+>                         (handlers as WildCardEventHandlerList<Events>)
+>                             .slice()
+>                             .map((handler) => {
+>                             handler(type, evt!);
+>                         });
+>                     }
+>                 },
+> };
 > }
 > ```
 
@@ -316,26 +316,52 @@
 >```js
 >//代码示例
 >----------------------------- 未优化:使用then链式调用 ---------------------------------------------------------
->fetch(`/api1/search/users2?q=${keyWord}`).then(
->			response => {
->				console.log('联系服务器成功了');
->				return response.json()
->			},
->			error => {
->				console.log('联系服务器失败了',error);
->				return new Promise(()=>{})
->			}
->		).then(
->			response => {console.log('获取数据成功了',response);},
->			error => {console.log('获取数据失败了',error);}
+>    fetch(`/api1/search/users2?q=${keyWord}`).then(
+>    response => {
+>        console.log('联系服务器成功了');
+>        return response.json()
+>    },
+>    error => {
+>        console.log('联系服务器失败了',error);
+>        return new Promise(()=>{})
+>    }
+>).then(
+>    response => {console.log('获取数据成功了',response);},
+>    error => {console.log('获取数据失败了',error);}
 >) 
->----------------------------- 优化后:使用async+await ---------------------------------------------------------
->try {
->		const response= await fetch(`/api1/search/users2?q=${keyWord}`)
->		const data = await response.json()
->		console.log(data);
->		} catch (error) {
->		onsole.log('请求出错',error);
->		}
+>    ----------------------------- 优化后:使用async+await ---------------------------------------------------------
+>        try {
+>            const response= await fetch(`/api1/search/users2?q=${keyWord}`)
+>            const data = await response.json()
+>            console.log(data);
+>        } catch (error) {
+>            onsole.log('请求出错',error);
+>        }
 >}
 >```
+
+## 四、github搜索案例相关知识点
+
+```
+	1.设计状态时要考虑全面，例如带有网络请求的组件，要考虑请求失败怎么办。
+	2.ES6小知识点：解构赋值+重命名
+				let obj = {a:{b:1}}
+				const {a} = obj; //传统解构赋值
+				const {a:{b}} = obj; //连续解构赋值
+				const {a:{b:value}} = obj; //连续解构赋值+重命名
+	3.消息订阅与发布机制
+				1.先订阅，再发布（理解：有一种隔空对话的感觉）
+				2.适用于任意组件间通信
+				3.要在组件的componentWillUnmount中取消订阅
+	4.fetch发送请求（关注分离的设计思想）
+				try {
+					const response= await fetch(`/api1/search/users2?q=${keyWord}`)
+					const data = await response.json()
+					console.log(data);
+				} catch (error) {
+					console.log('请求出错',error);
+				}
+```
+
+
+## 
