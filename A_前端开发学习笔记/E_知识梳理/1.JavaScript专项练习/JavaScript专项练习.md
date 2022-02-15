@@ -1,7 +1,8 @@
-# #说明
 
->本人对于所遇面试题进行了详细的知识点拆解与梳理,在此分享给大家,有错欢迎指出讨论,求共同进步 --> **[JavaScript专项练习](https://gitee.com/hongjilin/hongs-study-notes/tree/master/面试_面试题整理/JavaScript专项练习)**
->除此笔记外大家可以看我其他笔记 :**[全栈笔记](https://gitee.com/hongjilin/hongs-study-notes/tree/master)**、**[数据结构与算法](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_算法及课程基础学习笔记/数据结构与算法)**、**[编程_前端开发学习笔记](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_前端开发学习笔记)**、**[编程_后台服务端学习笔记](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_后台服务端学习笔记)** 、**[Java](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_后台服务端学习笔记/Java)** 、**[Nodejs](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_后台服务端学习笔记/Nodejs)** 、**[JavaScript笔记](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_前端开发学习笔记/HTML+CSS+JS基础笔记/JavaScript笔记)**、**[编程工具使用笔记](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_前端开发学习笔记/A_前端工具使用笔记)** 、**[ES6及后续版本学习笔记](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_前端开发学习笔记/ES6及后续版本学习笔记)** 、**[Vue笔记整合](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_前端开发学习笔记/Vue笔记整合)** 、**[React笔记](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_前端开发学习笔记/React笔记)**、**[微信小程序学习笔记](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_前端开发学习笔记/微信小程序学习笔记)**、**[Chrome开发使用及学习笔记](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_前端开发学习笔记/Chrome开发使用及学习笔记)** 以及许多其他笔记就不一一例举了
+
+
+
+
 
 # 一、DOM操作相关
 
@@ -66,7 +67,7 @@
 >
 >##### 答案解析:
 >
->>![image-20210903104214887](JavaScript专项练习中的图片/image-20210903104214887.png)
+>>![image-20210903104214887](https://s2.loli.net/2022/02/15/tjhBUS5Nca2usQK.png)
 >
 >1. 第一个错误是因为,getElementsByClassName得到的是一个数组集合,即便它只有一个结果
 >2. 第三个错误是因为在js里面添加的属性名使用驼峰法，在css里面使用连接线 除了id和query 其他返回的都是节点列表
@@ -196,7 +197,7 @@
 >></script>
 >>```
 >>
->>![image-20210910185337657](JavaScript专项练习中的图片/image-20210910185337657.png) 
+>>![image-20210910185337657](https://s2.loli.net/2022/02/15/OyAN81dS4KRzeuf.png) 
 >
 >是不是有点奇怪,这里有两个疑惑点:为何前面三个都是**id4** ,如果是因为改到引用的问题,为何第四个是 **id3**?
 >
@@ -206,11 +207,11 @@
 >
 >2. 为什么前面三个打印会按照最后一次修改为准呢?不是说同步吗?那即便改到了 **el** 应该不会影响到修改前的console.log(),难道console.log()是异步的?
 >
->   - console.log()是异步的吗?  详情请看本人笔记,这个能解释为何会引发这种问题  --> [Chrome的JavaScript控制台是否懒惰评估数组中处理](https://gitee.com/hongjilin/hongs-study-notes/blob/master/编程_前端开发学习笔记/HTML+CSS+JS基础笔记/JavaScript笔记/Chrome的JavaScript控制台是否懒惰评估数组中处理.md)
+>   - console.log()是异步的吗?
 >
 >   - 当你用调试工具打断点后,实际上发现会是正常的,这就很有意思了,不过好像也并没有什么大的影响
 >
->     ![image-20210910190905653](JavaScript专项练习中的图片/image-20210910190905653.png)
+>     ![image-20210910190905653](https://s2.loli.net/2022/02/15/obOZItnrudlBHN8.png)
 
 
 
@@ -231,11 +232,11 @@
 >>
 >>* 行内元素(包括行内块级):
 >>
->>  ![image-20210907112535399](JavaScript专项练习中的图片/image-20210907112535399.png) 
+>>  ![image-20210907112535399](https://s2.loli.net/2022/02/15/k6tcGgwia28UxoL.png) 
 >>
 >>* 块级元素:
 >>
->>  ![image-20210907112510430](JavaScript专项练习中的图片/image-20210907112510430.png) 
+>>  ![image-20210907112510430](https://s2.loli.net/2022/02/15/53zv8V27BdWLSIN.png) 
 >
 >##### 答案解析:
 >
@@ -246,21 +247,21 @@
 
 >```html
 ><body>
->  <button id="button1">禁用1</button>
->  <button id="button2">禁用2</button>
->  <button id="button3">禁用3</button>
->  <button id="button4">禁用4</button>
->  <button id="button5">禁用5</button>
->  <button id="button6">禁用6</button>
+><button id="button1">禁用1</button>
+><button id="button2">禁用2</button>
+><button id="button3">禁用3</button>
+><button id="button4">禁用4</button>
+><button id="button5">禁用5</button>
+><button id="button6">禁用6</button>
 ></body>
 ><script>
->  //下面是选项    
->  document.getElementById("button1").readOnly = true;
->  document.getElementById("button2").setAttribute('readOnly', 'true');
->  document.getElementById("button3").disabled = true;
->  document.getElementById("button4").disabled = false; //使用此方法设置 disabled 为false
->  document.getElementById("button5").setAttribute('disabled', 'true');
->  document.getElementById("button6").setAttribute('disabled', false); //使用 setAttribute 方法设置 disabled 为false
+>//下面是选项    
+>document.getElementById("button1").readOnly = true;
+>document.getElementById("button2").setAttribute('readOnly', 'true');
+>document.getElementById("button3").disabled = true;
+>document.getElementById("button4").disabled = false; //使用此方法设置 disabled 为false
+>document.getElementById("button5").setAttribute('disabled', 'true');
+>document.getElementById("button6").setAttribute('disabled', false); //使用 setAttribute 方法设置 disabled 为false
 ></script>
 >```
 >
@@ -270,18 +271,15 @@
 >>* 同时 Readonly 只针对 input(text/password)  和 textarea 有效
 >>* 只要设置了 [disabled] 属性不论什么值都会禁用,包括 **false**,页面似乎只在乎是否有这个属性 而不在乎其值
 >>* 小知识点：setArrtibute在ie7以前是不能通过style和class设置属性的
->>*  **[JavaScript专项练习]()**
 >
 >##### 答案解析
 >
 >>* 同时 Readonly 只针对 input(text/password)  和 textarea 有效,所以排除A、B项
 >>* 其余项看下方图解
->>
->>![image-20210909195142924](JavaScript专项练习中的图片/image-20210909195142924.png) 
+>
+>>![image-20210909195142924](https://s2.loli.net/2022/02/15/91HcTu32BwPlgs8.png) 
 
 # 二、正则相关
-
-> 如果对于此部分知识点相对薄弱的同学可以看我正则笔记 --> **[正则表达式学习笔记](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_前端开发学习笔记/正则表达式学习笔记)** 
 
 ## Ⅰ - 单选题
 
@@ -316,7 +314,7 @@
 >
 >##### 答案解析:
 >
->>![image-20210903105900665](JavaScript专项练习中的图片/image-20210903105900665.png)
+>>![image-20210903105900665](https://s2.loli.net/2022/02/15/WiP4eRaOKC2ymh5.png)
 >
 >所以选第三个
 
@@ -508,7 +506,7 @@
 >console.log(({}==false)?true:false); // => console.log((NaN==0)?true:false);
 >```
 >
->![image-20210906101415830](JavaScript专项练习中的图片/image-20210906101415830.png) 
+>![image-20210906101415830](https://s2.loli.net/2022/02/15/dhS3MUeayRLW62q.png) 
 
 ### 2、以下哪个表达式的值为true？
 
@@ -527,7 +525,7 @@
 >
 >- 考察对于逻辑符 “&&”和‘||’ 的理解:
 >
->  ![image-20210906135057894](JavaScript专项练习中的图片/image-20210906135057894.png) 
+>  ![image-20210906135057894](https://s2.loli.net/2022/02/15/Lst4w9HArgVNUyJ.png) 
 >
 >##### 答案解析
 >
@@ -666,7 +664,7 @@
 >
 >1. 详情可以查阅[MDN的Boolean相关资料](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Boolean)
 >2. 注意点: 要分清 **new Boolean()** 与 **Boolean()**的区别:
->  - ![image-20210908112451290](JavaScript专项练习中的图片/image-20210908112451290.png) 
+>  - ![image-20210908112451290](https://s2.loli.net/2022/02/15/sV3HpkFjW2PYEhc.png) 
 >  -  **任何对象转为布尔值，都为得到 true**（**切记！在 JS 中，只有 0，-0，NaN，""，null，undefined 这六个值转布尔值时，结果为 false**）包括 `布尔对象`
 >
 >##### 答案解析:
@@ -719,8 +717,6 @@
 
 ## Ⅲ - 填空题
 
-> 如果要看更多JS面试题目可以点这里  --> **[JavaScript专项练习](https://gitee.com/hongjilin/hongs-study-notes/tree/master/面试_面试题整理/JavaScript专项练习)**
-
 ### 1、求下方打印结果 ()
 
 >```js
@@ -735,30 +731,26 @@
 >
 >1. **&& 运算符的优先级高于 ||，而 || 的优先级又高于?** : 
 >
->  - 所以我们对它进行第一次分解：**`((a && b) || c) ? (c || b) ? a : (c && b) : a`**
+> - 所以我们对它进行第一次分解：**`((a && b) || c) ? (c || b) ? a : (c && b) : a`**
 >
 >2. **? : 是右关联**
 >
->  - 例如: a ? b : c ? d : e  --> a ? b : (c ? d : e)
->  - 所以进一步对上方进行分解 : **`((a && b) || c) ? ((c || b) ? a : (c && b)) : a`**
+> - 例如: a ? b : c ? d : e  --> a ? b : (c ? d : e)
+> - 所以进一步对上方进行分解 : **`((a && b) || c) ? ((c || b) ? a : (c && b)) : a`**
 >
 >3.  **对于&&来说，如果条件判断结果为true就会返回第二个操作数的值，如果为false就会返回第一个操作数的值**
 >
->  - 此知识点在本人笔记 [JS中的逻辑运算符详解笔记](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_前端开发学习笔记/HTML+CSS+JS基础笔记/JavaScript笔记/JS中的逻辑运算符详解笔记.md) 部分已经给出了详细解释
->  - 所以对上方式子进行初步运算后可以得出: **`c ? ((c || b) ? a : c) : a`**  
+> - 所以对上方式子进行初步运算后可以得出: **`c ? ((c || b) ? a : c) : a`**  
 >
 >4. **对于 || 来说，如果条件判断结果为true就会返回第一个操作数的值，如果为false就会返回第二个操作数的值；**
 >
->  - 此知识点在本人笔记 [JS中的逻辑运算符详解笔记](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_前端开发学习笔记/HTML+CSS+JS基础笔记/JavaScript笔记/JS中的逻辑运算符详解笔记.md) 部分已经给出了详细解释
->  - 所以对上方式子进行初步运算后可以得出: **`c ? (b ? a : c) : a`**
+> - 所以对上方式子进行初步运算后可以得出: **`c ? (b ? a : c) : a`**
 >
 >5. 此时结果就非常明了了,下面给出结果变化
 >
->  -  **`c ? (b ? a : c) : a`** ==> false ? ( "努力学习的汪" ? 18 : false) : 18
->  -  经过隐式转换后 : **false ? (true ? 18: false) : 18**
->  -  三元运算符可知,当**?**前为**false**,返回**:**后方的值 所以结果为`18`
-
-
+> -  **`c ? (b ? a : c) : a`** ==> false ? ( "努力学习的汪" ? 18 : false) : 18
+> -  经过隐式转换后 : **false ? (true ? 18: false) : 18**
+> -  三元运算符可知,当**?**前为**false**,返回**:**后方的值 所以结果为`18`
 
 
 
@@ -825,13 +817,12 @@
 >
 >* setInterval() 方法可按照指定的周期（以毫秒计）来调用函数或计算表达式。 
 >* setTimeout() 是属于 window 的方法，该方法用于在指定的毫秒数后调用函数或计算表达式。
->* JavaScript中setInterval和setTimeout第一个参数加与不加引号的区别? --> [不知道的点我传送](https://gitee.com/hongjilin/hongs-study-notes/blob/master/%E7%BC%96%E7%A8%8B_%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/HTML+CSS+JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/JavaScript%E7%AC%94%E8%AE%B0/setInterval%E5%92%8CsetTimeout%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8F%82%E6%95%B0%E5%8A%A0%E4%B8%8E%E4%B8%8D%E5%8A%A0%E5%BC%95%E5%8F%B7%E7%9A%84%E5%8C%BA%E5%88%AB.md)
+>* JavaScript中setInterval和setTimeout第一个参数加与不加引号的区别?
 >
 >##### 答案解析
 >
 >> * 首先 setTimeout 是超时方法,所以排除B选项,其次第二个参数单位是毫秒,所以排除A、D项,所以选择C
 >> * 个人认为其实答案可能稍微有点不严谨,换成:**10ms后把执行这个方法的任务推入到宏任务队列中**,可能更好些
->> * 对于宏任务与微任务不理解的同学可以看这里 --> [宏任务( macro task )与微任务( micro task )](https://gitee.com/hongjilin/hongs-study-notes/tree/master/%E7%BC%96%E7%A8%8B_%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/HTML+CSS+JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/JavaScript%E7%AC%94%E8%AE%B0#%E2%85%A2-%E5%AE%8F%E4%BB%BB%E5%8A%A1macro-task%E4%B8%8E%E5%BE%AE%E4%BB%BB%E5%8A%A1micro-task)
 
 ### 4、下面哪个选项中的对象与浏览列表有关（ ）
 
@@ -845,7 +836,7 @@
 >##### 知识点梳理以及解析
 >
 >>* 往上找了一圈,对于浏览器列表具体定义并没有找到,但是觉得应该指的是 **JS的BOM对象**
->>* ![image-20210910180517691](JavaScript专项练习中的图片/image-20210910180517691.png) 
+>>* ![image-20210910180517691](https://s2.loli.net/2022/02/15/LVJ37fqulYbHZiO.png) 
 >>*  所以符合条件的为B选项
 
 
@@ -876,13 +867,13 @@
 >
 >1. A选项没啥好说的,原生支持的方法
 >
->   > ![image-20210909195908190](JavaScript专项练习中的图片/image-20210909195908190.png) 
+>   > ![image-20210909195908190](https://s2.loli.net/2022/02/15/blHBI1QWq9xeaDj.png) 
 >
 >2. B选项 **instanceof** 运算符返回一个布尔值，表示对象是否为某个构造函数的实例,这时可能就有同学要提出疑问了:
 >
 >   - 我用这个方法,似乎无法分辨数组与对象的区别啊, arr instanceof Array/Object 似乎都会返回 **true** !这不是不严谨吗?
 >   - 注意审题:检测一个JS对象是数组类型,既定的事实是我们当前是一个对象,然后要判断它是否为数组,不懂直接看图解 
->   - ![image-20210909202222992](JavaScript专项练习中的图片/image-20210909202222992.png)
+>   - ![image-20210909202222992](https://s2.loli.net/2022/02/15/tjJVkW7GuBrE1cC.png)
 >
 >3. C选项 **typeof** 能判断类型有：number、string、boolean、symbol、undefined、function； 
 >
@@ -890,7 +881,7 @@
 >
 >4. D选项直接上图
 >
->   ![image-20210909203353878](JavaScript专项练习中的图片/image-20210909203353878.png) 
+>   ![image-20210909203353878](https://s2.loli.net/2022/02/15/AgRu91b7MmPWIDt.png) 
 
 ### 2、对于代码 var a = 10.42; 取出 a 的整数部分，以下代码哪些是正确的？
 
@@ -911,8 +902,6 @@
 >>   - 如果想正确修改需要这样调用: String.prototype.split.call(a,'.')[0]
 
 # 六、this指向相关
-
-> 此处知识点不懂的可以看本人 [JS进阶笔记函数的this部分](https://gitee.com/hongjilin/hongs-study-notes/tree/master/%E7%BC%96%E7%A8%8B_%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/HTML+CSS+JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/JavaScript%E7%AC%94%E8%AE%B0#%E2%85%B4-%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84this),本人给出了详细的笔记梳理
 
 ## Ⅰ- 单选题
 
@@ -983,10 +972,9 @@
 >
 >   >这里需要澄清一个事情: 箭头函数原则上是没有this的，我们口中的this只是一种解释原型链的东西，但是官方是没有this的，所以，这二者怎么能相提并论呢？所以这种情况是不考虑进来的
 >   >
->   >![image-20210907111644631](JavaScript专项练习中的图片/image-20210907111644631.png)
+>   >![image-20210907111644631](https://s2.loli.net/2022/02/15/y6Qf1VuoMsaOIrP.png)
 >   >
->   >如果对于此处仍有疑虑的同学,可以看本人   [JS进阶笔记函数的this部分](https://gitee.com/hongjilin/hongs-study-notes/tree/master/%E7%BC%96%E7%A8%8B_%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/HTML+CSS+JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/JavaScript%E7%AC%94%E8%AE%B0#%E2%85%A4-%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84this),我会在此处给出详细记录解释
->
+> 
 >2. 有new关键字指的就是构造函数生成的实例,所以是对的
 >
 >3. C选项错在 ”**总是**“，apply,call就可以改变this指向
@@ -996,8 +984,6 @@
 >5. 所以选择ABD
 
 # 七、闭包相关
-
-> 此部分知识点如果不够梳理,可以看本人JS笔记中对于  [闭包的详细描述](https://gitee.com/hongjilin/hongs-study-notes/tree/master/%E7%BC%96%E7%A8%8B_%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/HTML+CSS+JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/JavaScript%E7%AC%94%E8%AE%B0#5%E9%97%AD%E5%8C%85)  
 
 ## Ⅰ - 单选题
 
@@ -1024,11 +1010,10 @@
 >##### 知识点梳理
 >
 >1. Function是引用类型：保存在堆中，变量f1,f2是保存在栈中； 
->2. 闭包：一个函数（产生新的作用域）定义的局部变量、子函数的作用域在函数内， 但是一旦离开了这个函数，局部变量就无法访问   -->  [关于闭包详细笔记请看](https://gitee.com/hongjilin/hongs-study-notes/tree/master/%E7%BC%96%E7%A8%8B_%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/HTML+CSS+JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/JavaScript%E7%AC%94%E8%AE%B0#5%E9%97%AD%E5%8C%85)  
->3. 作用域:篇幅较长,所以放一个索引,需要的同学可以去查阅 -->  [作用域相关知识点笔记](https://gitee.com/hongjilin/hongs-study-notes/tree/master/%E7%BC%96%E7%A8%8B_%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/HTML+CSS+JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/JavaScript%E7%AC%94%E8%AE%B0#3%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE)
->4. 运算符: i++与++i的区别:
+>2. 闭包：一个函数（产生新的作用域）定义的局部变量、子函数的作用域在函数内， 但是一旦离开了这个函数，局部变量就无法访问
+>3. 作用域:篇幅较长,运算符: i++与++i的区别:
 >
->![image-20210908105359459](JavaScript专项练习中的图片/image-20210908105359459.png) 
+>![image-20210908105359459](https://s2.loli.net/2022/02/15/gJHhW9boQ4NxZpt.png) 
 >
 >##### 答案解析
 >
@@ -1052,8 +1037,8 @@
 >##### 知识梳理
 >
 >> * 连续的赋值运算符表达式，是从右往左
->> * JS声明变量与不声明变量直接使用的区别 -->  **[点我传送 ](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_前端开发学习笔记/HTML+CSS+JS基础笔记/JavaScript笔记/JS声明变量与不声明变量直接使用的区别.md)** 
->> * 闭包、自执行函数相关知识点   -->  [关于闭包详细笔记请看](https://gitee.com/hongjilin/hongs-study-notes/tree/master/%E7%BC%96%E7%A8%8B_%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/HTML+CSS+JS%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/JavaScript%E7%AC%94%E8%AE%B0#5%E9%97%AD%E5%8C%85)  
+>> * JS声明变量与不声明变量直接使用的区别 
+>> * 闭包、自执行函数相关知识点  
 >
 >##### 答案解析
 >
@@ -1095,8 +1080,6 @@
 
 # 八、ES系列相关
 
-> 关于ES系列详细笔记可以看这里  --> **[ES6及后续版本学习笔记](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_前端开发学习笔记/ES6及后续版本学习笔记)** 
-
 ## Ⅰ - 单选题
 
 ### 1、以下符合 ES6 写法的有：
@@ -1120,7 +1103,7 @@
 >
 >##### 知识梳理
 >
->> * 详细知识点主要在ES6的  导入导出 class相关部分,查阅详情请看 --> **[ES6及后续版本学习笔记](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_前端开发学习笔记/ES6及后续版本学习笔记)** 
+>> * 详细知识点主要在ES6的  导入导出 class相关部分
 >> * constructor方法是类的默认方法，通过new命令生成对象实例时，自动调用该方法。一个类必须有 **constructor** 方法，如果没有显式定义，一个空的 **constructor** 被默认添加。
 >
 >##### 答案解析
@@ -1184,11 +1167,11 @@
 >
 >##### 知识点梳理
 >
->* 原型与原型链相关知识点,此部分不太熟悉的同学可以看本人笔记 -->  **[JavaScript进阶笔记的原型链部分](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_前端开发学习笔记/HTML+CSS+JS基础笔记/JavaScript笔记#1原型与原型链)** 
+>* 原型与原型链相关知识点
 >
 >* **重写原型对象会切断现有原型与任何之前已经存在的实例之间的联系，他们引用的仍然是实例化时的原型**, 这部分比较绕,可以看图例,这部分比较绕,可以看图例
 >
->  > ![image-20210910170331780](JavaScript专项练习中的图片/image-20210910170331780.png) 
+>  > ![image-20210910170331780](https://s2.loli.net/2022/02/15/LUlqSrs6ioDk2NK.png) 
 >
 >* 题目中重写方式其实是还是很奇怪的,通常我们都是 **A.prototype.do=function() {  }** 这样修改原型**对象**的,而不是直接将原型给直接赋成函数
 >
@@ -1222,7 +1205,7 @@
 >
 >##### 知识点梳理
 >
->>* 原型与原型链相关知识点,此部分不太熟悉的同学可以看本人笔记 -->  **[JavaScript进阶笔记的原型链部分](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_前端开发学习笔记/HTML+CSS+JS基础笔记/JavaScript笔记#1原型与原型链)** 
+>>* 原型与原型链相关知识点
 >>* 如果有x但是没有赋值，则是undefined,相当于x=undefined. 就不会进入原型链
 >
 >##### 答案解析

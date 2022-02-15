@@ -73,7 +73,7 @@
 
 ## Ⅳ-原理图
 
-![Axios系统学习笔记原理图](Axios入门与源码解析笔记中的图片/Axios系统学习笔记原理图.png)
+![Axios系统学习笔记原理图](https://s2.loli.net/2022/02/15/CkJY8KmXrjT1HUB.png)
 
 
 
@@ -289,19 +289,19 @@
 >
 >2. request(config): 
 >  将请求拦截器 / dispatchRequest() / 响应拦截器 通过 promise 链串连起来, 
->   返回 promise
+>     返回 promise
 >
 >3. dispatchRequest(config): 
 >  转换请求数据 ===> 调用 xhrAdapter()发请求 ===> 请求返回后转换响应数
->   据. 返回 promise
+>     据. 返回 promise
 >
 >4. xhrAdapter(config): 
 >  创建 XHR 对象, 根据 config 进行相应设置, 发送特定请求, 并接收响应数据, 
->   返回 promise 
+>     返回 promise 
 >
 >5. 流程图:
 >
-> ![Axios系统学习流程图](Axios入门与源码解析笔记中的图片/Axios系统学习流程图.png)
+> ![Axios系统学习流程图](https://s2.loli.net/2022/02/15/O4pCbE1du9XLnjr.png)
 >
 >
 

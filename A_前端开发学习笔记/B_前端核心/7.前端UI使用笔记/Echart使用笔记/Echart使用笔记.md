@@ -62,4 +62,4 @@
 >
 >4. 效果示例图
 >
->  ![](Echart使用笔记中的图片/Echart自适应防抖函数示例.gif)
+>  ![](https://s2.loli.net/2022/02/15/wLUBX5PoDdaKQGF.gif)

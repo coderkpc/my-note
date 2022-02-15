@@ -4,8 +4,6 @@
 >
 >本笔记主要记录工作中项目中遇到的`与官方文档有差异化的` 的使用方式、或者是自己对于文档记录的组件的使用,方便自己查阅
 >
->除此笔记外大家可以看我其他笔记 :**[全栈笔记](https://gitee.com/hongjilin/hongs-study-notes/tree/master)**、**[数据结构与算法](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_算法及课程基础学习笔记/数据结构与算法)**、**[编程_前端开发学习笔记](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_前端开发学习笔记)**、**[编程_后台服务端学习笔记](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_后台服务端学习笔记)** 、**[Java](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_后台服务端学习笔记/Java)** 、**[Nodejs](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_后台服务端学习笔记/Nodejs)** 、**[JavaScript笔记](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_前端开发学习笔记/HTML+CSS+JS基础笔记/JavaScript笔记)**、**[ES6及后续版本学习笔记](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_前端开发学习笔记/ES6及后续版本学习笔记)** 、**[Vue笔记整合](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_前端开发学习笔记/Vue笔记整合)** 、**[React笔记](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_前端开发学习笔记/React笔记)**、**[微信小程序学习笔记](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_前端开发学习笔记/微信小程序学习笔记)**、**[Chrome开发使用及学习笔记](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_前端开发学习笔记/Chrome开发使用及学习笔记)** 以及许多其他笔记就不一一例举了
->
 
 # #目录
 
@@ -147,7 +145,7 @@
 
 >1. 出现场景:详见截图
 >
-> <img src="AntDesign_ofReact使用笔记中的图片/image-20210519174400852.png" alt="image-20210519174400852" style="zoom:80%;" />
+> <img src="https://s2.loli.net/2022/02/15/8iA7ToeWIsaSH3g.png" alt="image-20210519174400852" style="zoom:80%;" />
 >
 >2. 代码示例:此处指举例第一个输入框,并在里面进行注释
 >
@@ -210,7 +208,7 @@
 >
 >2. 需求示例截图
 >
->   ![image-20210705164549793](AntDesign_ofReact使用笔记中的图片/image-20210705164549793.png)
+>   ![image-20210705164549793](https://s2.loli.net/2022/02/15/eYbwouW96rM4XQa.png)
 >
 >3. 实现思路:
 >
@@ -453,7 +451,7 @@
 ></Select>
 >```
 >
->![image-20210916142227728](AntDesign_ofReact使用笔记中的图片/image-20210916142227728.png) 
+>![image-20210916142227728](https://s2.loli.net/2022/02/15/VJIsHeOx8LPKgfu.png) 
 
 ### Ⅱ - 自定义添加下拉项
 
@@ -517,7 +515,7 @@
 >
 >###### 效果展示
 >
->![image-20210928120121096](AntDesign_ofReact使用笔记中的图片/image-20210928120121096.png) 
+>![image-20210928120121096](https://s2.loli.net/2022/02/15/bxB2z6AVsidQk1O.png) 
 
 
 
@@ -640,11 +638,11 @@
 >
 >   1. 未使用时效果
 >
->      <img src="AntDesign_ofReact使用笔记中的图片/image-20210519180836289.png" alt="image-20210519180836289" style="zoom:80%;" />
+>      <img src="https://s2.loli.net/2022/02/15/xUbODgTS57znZ1C.png" alt="image-20210519180836289" style="zoom:80%;" />
 >
 >         2. 使用后效果
 >
->      <img src="AntDesign_ofReact使用笔记中的图片/image-20210519180215667.png" alt="image-20210519180215667" style="zoom:80%;" />
+>      <img src="https://s2.loli.net/2022/02/15/8pYU2KZkuDc3w5s.png" alt="image-20210519180215667" style="zoom:80%;" />
 >
 >        `ps`:截图中展示的都是开发中的`测试假数据`
 >
@@ -730,7 +728,7 @@
 >
 >1. 需求场景:当我的列表内容过多使得表格撑开,导致整个表格样式与希望效果不符合时,我希望能将其超出隐藏,并能悬停显示全部信息
 >
->   <img src="AntDesign_ofReact使用笔记中的图片/image-20210520160244113.png" alt="image-20210520160244113" style="zoom: 67%;" />
+>   <img src="https://s2.loli.net/2022/02/15/3myFldVgsfKwoL7.png" alt="image-20210520160244113" style="zoom: 67%;" />
 >
 >2. 代码实现
 >
@@ -758,7 +756,7 @@
 >
 >3. 效果实现图
 >
->   <img src="AntDesign_ofReact使用笔记中的图片/image-20210520161131163.png" alt="image-20210520161131163" style="zoom:67%;" />
+>   <img src="https://s2.loli.net/2022/02/15/v1XA9rI5FjqhVog.png" alt="image-20210520161131163" style="zoom:67%;" />
 
 ### Ⅴ-Table表中使用气泡提示Tooltip
 
@@ -766,7 +764,7 @@
 
 >1. 需求场景:当你的产品要你实现这个效果时
 >
->   ![image-20210617185457284](AntDesign_ofReact使用笔记中的图片/image-20210617185457284.png)
+>   ![image-20210617185457284](https://s2.loli.net/2022/02/15/mSdKz9VWvyihCoI.png)
 >
 >2. 代码实现:直接在title中写即可
 >
@@ -809,7 +807,7 @@
 >
 >3. 效果展示
 >
->   ![image-20210617185606230](AntDesign_ofReact使用笔记中的图片/image-20210617185606230.png)
+>   ![image-20210617185606230](https://s2.loli.net/2022/02/15/JUWyeCSYINsEac7.png)
 
 #### ②*列表中正常使用气泡提示Tooltip*
 
@@ -832,7 +830,7 @@
 >
 >3. 实现效果
 >
->   ![image-20210708114340551](AntDesign_ofReact使用笔记中的图片/image-20210708114340551.png) 
+>   ![image-20210708114340551](https://s2.loli.net/2022/02/15/phCVKrgvJmHTzdM.png) 
 
 #### ③ *列表中使用[Tooltip]组件却出现两个提示*的问题解决
 
@@ -858,7 +856,7 @@
 >       
 >
 >   - 问题截图与分析:
->     ![image-20210712161809111](AntDesign_ofReact使用笔记中的图片/image-20210712161809111.png) .
+>     ![image-20210712161809111](https://s2.loli.net/2022/02/15/cBg1rCtPqVfSuYA.png) .
 >
 >2. 问题分析:
 >
@@ -885,7 +883,7 @@
 >       ```
 >
 >     - 初次改进效果:
->       ![image-20210712162540686](AntDesign_ofReact使用笔记中的图片/image-20210712162540686.png).
+>       ![image-20210712162540686](https://s2.loli.net/2022/02/15/1Wh9g3UpZAN2Vzi.png).
 >
 >   - 可以看出虽然解决了`双气泡提示`的问题,但也引出了一个新问题::返回的新的DOM它不受前方`ellipsis`属性影响,虽然气泡提示成功变为只有一个,但是下方文本仍然超出,怎么办?
 >
@@ -935,7 +933,7 @@
 >
 >   - 效果截图:
 >
->     ![image-20210712163609695](AntDesign_ofReact使用笔记中的图片/image-20210712163609695.png) 
+>     ![image-20210712163609695](https://s2.loli.net/2022/02/15/5QktC8nrqKBjI9V.png) 
 >
 >   
 >
@@ -977,7 +975,7 @@
 > 调用: sorter: (a, b) => tool.timeSorter(b, a)('start_time')
 > ```
 >
->![image-20210630115858466](AntDesign_ofReact使用笔记中的图片/image-20210630115858466.png)
+>![image-20210630115858466](https://s2.loli.net/2022/02/15/VyKRh7euaPmt3bB.png)
 
 ####  ②*`table通用对比大小`*
 
@@ -1000,7 +998,7 @@
 >  sorter={(a: object, b: object) => tool.commonSorter(a, b)('url')}
 >  ```
 >
->  ![image-20210715153029004](AntDesign_ofReact使用笔记中的图片/image-20210715153029004.png)
+>  ![image-20210715153029004](https://s2.loli.net/2022/02/15/m6Dh283ailGXVey.png)
 >
 >`注意`:排序返回应为`正负数[如1、-1]`而不是`boolean`类型
 
@@ -1019,11 +1017,11 @@
 >
 >   - 实现方法1:row含有本行所有字段
 >
->     > ![](AntDesign_ofReact使用笔记中的图片/列表筛选条件3.png)
+>     > ![](https://s2.loli.net/2022/02/15/w16rMAOTzQC5c9a.png)
 >
 >   - 实现方法2:其实就是换个写法
 >
->     > ![](AntDesign_ofReact使用笔记中的图片/列表筛选条件2.png)
+>     > ![](https://s2.loli.net/2022/02/15/KuGVmXTMkLOJqzh.png)
 
 
 
@@ -1037,7 +1035,7 @@
 
 >1. 需求场景:
 >
->   ![image-20210714140338803](AntDesign_ofReact使用笔记中的图片/image-20210714140338803.png) 
+>   ![image-20210714140338803](https://s2.loli.net/2022/02/15/pmwNz46FMWTd2e1.png) 
 >
 >2. API概述:
 >
@@ -1166,4 +1164,68 @@
 >
 >###### 效果展示
 >
->![image-20210928105404801](AntDesign_ofReact使用笔记中的图片/image-20210928105404801.png)
+>![image-20210928105404801](https://s2.loli.net/2022/02/15/SM4CTUE7XlA6DZa.png)
+
+# 三、文档和配置
+
+## 1、相关文档
+
+>### ant-design(国内蚂蚁金服)
+>
+>1. 官网: https://ant.design/index-cn
+>2. Github: https://github.com/ant-design/ant-design/
+>
+>### material-ui(国外)
+>
+>1. 官网: http://www.material-ui.com/#/
+>
+>2. github: https://github.com/callemall/material-ui
+
+## 2、按需引入与自定义主题
+
+### Ⅰ-安装依赖
+
+> yarn add react-app-rewired customize-cra babel-plugin-import less less-loader
+
+### Ⅱ-修改package.json
+
+>```json
+>	"scripts": {
+>	"start": "react-app-rewired start",
+>	"build": "react-app-rewired build",
+>	"test": "react-app-rewired test",
+>	"eject": "react-scripts eject"
+>	},
+>```
+
+### Ⅲ-根目录下创建config-overrides.js
+
+>注意:如果按照官方文档的自定义主题进行配置可能会报错,需要多加一层`lessOptions`
+>
+>```js
+>//配置具体的修改规则
+>const { override, fixBabelImports,addLessLoader} = require('customize-cra');
+>module.exports = override(
+>	fixBabelImports('import', {
+>		libraryName: 'antd',
+>		libraryDirectory: 'es',
+>		style: true,
+>	}),
+>	addLessLoader({
+>		lessOptions:{
+>			javascriptEnabled: true,
+>			modifyVars: { '@primary-color': 'green' },
+>		}
+>	}),
+>-------------------官方方法,会报错-------------------------    
+>+ addLessLoader({
+>+   javascriptEnabled: true,
+>+   modifyVars: { '@primary-color': '#1DA57A' },
+>+ }),
+>---------------------------------------------------------   
+>);
+>```
+
+### Ⅳ-成功
+
+> 备注：不用在组件里亲自引入样式了，即：import 'antd/dist/antd.css'应该删掉

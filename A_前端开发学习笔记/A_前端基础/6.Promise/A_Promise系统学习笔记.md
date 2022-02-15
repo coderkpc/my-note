@@ -3,9 +3,9 @@
 >该笔记为观看`尚硅谷Web前端Promise教程从入门到精通（2021抢先版）`与`尚硅谷Promise教程(promise前端进阶必学)`两个课程视频以及参考其课件;以及阮一峰的ES6日志整理而成
 >
 >
->此部分知识为学习axios预备知识,预备知识链:[ajax](https://gitee.com/hongjilin/hongs-study-notes/tree/master/%E7%BC%96%E7%A8%8B_%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Ajax%E3%80%81Axios%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0) --> [promise](https://gitee.com/hongjilin/hongs-study-notes/tree/master/%E7%BC%96%E7%A8%8B_%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Promise%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0) --> [axios](https://gitee.com/hongjilin/hongs-study-notes/tree/master/%E7%BC%96%E7%A8%8B_%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Ajax%E3%80%81Axios%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0)  --> [react](https://gitee.com/hongjilin/hongs-study-notes/tree/master/%E7%BC%96%E7%A8%8B_%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/React%E7%AC%94%E8%AE%B0)/[vue](https://gitee.com/hongjilin/hongs-study-notes/tree/master/%E7%BC%96%E7%A8%8B_%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Vue%E7%AC%94%E8%AE%B0%E6%95%B4%E5%90%88)
+>此部分知识为学习axios预备知识,预备知识链:ajax --> promise --> axios --> react/vue
 >
->此处强烈建议同学们学完 **JavaScript** 不要急着去学 **NodeJS** 或者 **VUE** 框架 ,一定要先学 **`ES系列`** 现在基本上都用的ES6以及后续写法开发了(**`Promise也是ES6的知识点`**), 你不学基本上也是看不懂别人代码的, 这已经成了前端基本功了 --> **[ES6及后续版本学习笔记](https://gitee.com/hongjilin/hongs-study-notes/tree/master/编程_前端开发学习笔记/ES6及后续版本学习笔记)** 
+>此处强烈建议同学们学完 **JavaScript** 不要急着去学 **NodeJS** 或者 **VUE** 框架 ,一定要先学 **`ES系列`** 现在基本上都用的ES6以及后续写法开发了(**`Promise也是ES6的知识点`**), 你不学基本上也是看不懂别人代码的, 这已经成了前端基本功了
 >
 
 
@@ -83,7 +83,7 @@
 
 #### Ⅲ-promise的基本流程
 
->![Promise系统学习_promise工作流程](A_Promise系统学习笔记中的图片/Promise系统学习_promise工作流程.png)
+>![Promise系统学习_promise工作流程](C:/PersonalData/my-note/A_%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/A_%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/6.Promise/A_Promise%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%AD%E7%9A%84%E5%9B%BE%E7%89%87/Promise%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0_promise%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png)
 
 #### Ⅳ-promise的基本使用
 
@@ -250,7 +250,7 @@ mineReadFile('./resource/content.txt').then(value => {
 
 >回调函数嵌套调用, 外部回调函数异步执行的结果是嵌套的回调执行的条件
 >
->![Promise系统学习_回调地狱](A_Promise系统学习笔记中的图片/Promise系统学习_回调地狱.jpg)
+>![Promise系统学习_回调地狱](C:/PersonalData/my-note/A_%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/A_%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/6.Promise/A_Promise%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%AD%E7%9A%84%E5%9B%BE%E7%89%87/Promise%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0_%E5%9B%9E%E8%B0%83%E5%9C%B0%E7%8B%B1.jpg)
 
 ##### 	2、回调地狱的缺点?
 
@@ -490,7 +490,7 @@ mineReadFile('./resource/content.txt').then(value => {
 >//执行结果:  错误捕获:  Error: 抛出异常
 >```
 >
->注:可以在每个then()的第二个回调函数中进行err处理,也可以利用异常穿透特性,到最后用`catch`去承接统一处理,两者一起用时,前者会生效(因为err已经将其处理,就不会再往下穿透)而走不到后面的catch![image-20210927105504988](A_Promise系统学习笔记中的图片/image-20210927105504988.png)
+>注:可以在每个then()的第二个回调函数中进行err处理,也可以利用异常穿透特性,到最后用`catch`去承接统一处理,两者一起用时,前者会生效(因为err已经将其处理,就不会再往下穿透)而走不到后面的catch![image-20210927105504988](C:/PersonalData/my-note/A_%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/A_%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/6.Promise/A_Promise%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%AD%E7%9A%84%E5%9B%BE%E7%89%87/image-20210927105504988.png)
 
 #### Ⅶ- 中断 promise 链?
 
@@ -698,7 +698,7 @@ mineReadFile('./resource/content.txt').then(value => {
 >
 >上面代码中，使用`Promise`包装了一个图片加载的异步操作。如果加载成功，就调用`resolve`方法，否则就调用`reject`方法。
 >
->![image-20210926180306961](A_Promise系统学习笔记中的图片/image-20210926180306961.png) 
+>![image-20210926180306961](https://s2.loli.net/2022/02/15/GU5aE8D3KZ7hwyt.png) 
 
 #### ⑥ 举个用`Promise`对象实现的 Ajax 操作的栗子
 
@@ -731,11 +731,11 @@ mineReadFile('./resource/content.txt').then(value => {
 >
 >上面代码中，`getJSON`是对 XMLHttpRequest 对象的封装，用于发出一个针对 JSON 数据的 HTTP 请求，并且返回一个`Promise`对象。需要注意的是，在`getJSON`内部，`resolve`函数和`reject`函数调用时，都带有参数。
 >
->![image-20210926182129672](A_Promise系统学习笔记中的图片/image-20210926182129672.png)
+>![image-20210926182129672](https://s2.loli.net/2022/02/15/EqiMRavLtl6ZfWO.png)
 >
 >> 小贴士:此处可能有同学想尝试却发现读取本地文件会有跨域问题,这边教一下你们
 >
->> ![image-20210926182506259](A_Promise系统学习笔记中的图片/image-20210926182506259.png) 
+>> ![image-20210926182506259](https://s2.loli.net/2022/02/15/nh4wtDgz1WPFr7L.png) 
 
 #### ⑦  resolve()  的参数可以是另一个 Promise 实例
 
@@ -1009,7 +1009,7 @@ mineReadFile('./resource/content.txt').then(value => {
 >//执行结果:  错误捕获:  Error: 抛出异常
 >```
 >
->注:可以在每个then()的第二个回调函数中进行err处理,也可以利用异常穿透特性,到最后用`catch`去承接统一处理,两者一起用时,前者会生效(因为err已经将其处理,就不会再往下穿透)而走不到后面的catch![image-20210927105504988](A_Promise系统学习笔记中的图片/image-20210927105504988.png)
+>注:可以在每个then()的第二个回调函数中进行err处理,也可以利用异常穿透特性,到最后用`catch`去承接统一处理,两者一起用时,前者会生效(因为err已经将其处理,就不会再往下穿透)而走不到后面的catch![image-20210927105504988](https://s2.loli.net/2022/02/15/x826cLbAXn1lDyK.png)
 
 ##### f) 建议使用 catch() 进行异常处理
 
@@ -1199,7 +1199,7 @@ mineReadFile('./resource/content.txt').then(value => {
 >Promise.reject(3).finally(() => {})
 >```
 >
->![image-20210927135255264](A_Promise系统学习笔记中的图片/image-20210927135255264.png) 
+>![image-20210927135255264](https://s2.loli.net/2022/02/15/6sWmBKRgrF7XxVI.png) 
 
 #### ④ Promise.all()
 
@@ -2793,7 +2793,7 @@ Promise.race = function (promises) {
 
 >原理图:
 >
->![Promise系统学习_宏任务微任务原理图](A_Promise系统学习笔记中的图片/Promise系统学习_宏任务微任务原理图.png)
+>![Promise系统学习_宏任务微任务原理图](https://s2.loli.net/2022/02/15/XniaEbNwgoRlWLJ.png)
 >
 >说明:
 >
@@ -2881,7 +2881,7 @@ Promise.race = function (promises) {
 
 #### b) 第二个栗子的结果
 
->![image-20210827094130354](A_Promise系统学习笔记中的图片/image-20210827094130354.png)
+>![image-20210827094130354](https://s2.loli.net/2022/02/15/4q5RVOBkPNEagfx.png)
 >
 >PS: 可以忽略`undefined`这个打印结果, 因为这会加重我们对于宏任务与微任务的理解负担.
 >
@@ -2891,11 +2891,11 @@ Promise.race = function (promises) {
 
 ## Ⅰ- 出现场景
 
->![image-20210827095144833](A_Promise系统学习笔记中的图片/image-20210827095144833.png)
+>![image-20210827095144833](https://s2.loli.net/2022/02/15/5KmuJrfnOjWlz9e.png)
 
 ## Ⅱ - 尝试输入其他内容进行分析
 
->![image-20210827095702736](A_Promise系统学习笔记中的图片/image-20210827095702736.png)
+>![image-20210827095702736](https://s2.loli.net/2022/02/15/XOqdVAs2BRFrSt3.png)
 >
 >那么做个合理推测: 应该是在控制台输入的内容,它的 `返回值` 会显示出来,这让我们不禁想到JS的 [ **eval()** ]
 
@@ -2911,13 +2911,13 @@ Promise.race = function (promises) {
 
 ## Ⅳ - 验证一下
 
->![image-20210827100156570](A_Promise系统学习笔记中的图片/image-20210827100156570.png) 
+>![image-20210827100156570](https://s2.loli.net/2022/02/15/tmYVyoB5Jp2nUDP.png) 
 >
 >大家都是聪明人,看到这个结果应该就不用我组织语言来解释了吧 
 
 ## Ⅴ -  分析其在宏任务与微任务的打印顺序
 
->首先看图:![image-20210827094130354](A_Promise系统学习笔记中的图片/image-20210827094130354.png) 
+>首先看图:![image-20210827094130354](https://s2.loli.net/2022/02/15/4q5RVOBkPNEagfx.png) 
 >
 >可以看到 [ undefined ] 实在微任务完成后,宏任务执行前 打印
 

@@ -1234,7 +1234,7 @@ html .logo {
 
 ### 5.混合指令用例
 
->![混合指令用例](A_SassScript语法学习笔记中的图片/混合指令用例.png)
+>![混合指令用例](https://s2.loli.net/2022/02/15/vK5xlJzCngHI7MW.png)
 
 
 
@@ -1549,5 +1549,5 @@ p {
 
 >在工作中提出的对于同事代码的优化-->使用`sass混合指令知识`,方便后期维护
 >
->![混合指令用例](A_SassScript语法学习笔记中的图片/混合指令用例.png)
+>![混合指令用例](https://s2.loli.net/2022/02/15/vK5xlJzCngHI7MW.png)
 
