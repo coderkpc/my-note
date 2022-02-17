@@ -23,9 +23,7 @@
 ##### 1、后端路由
 
 >1)   理解： value是function, 用来处理客户端提交的请求。
->
->2)   注册路由： router.get(path, function(req, res))
->
+>2)   注册路由：app.get(path, function(req, res))
 >3)   工作过程：当node接收到一个请求时, 根据请求路径找到匹配的路由, 调用路由中的函数来处理请求, 返回响应数据
 
 ##### 2、前端路由
