@@ -286,16 +286,16 @@
 >3. 接收参数：this.props.match.params
 >
 >```jsx
->	-------------------------------发送参数:父组件----------------------------------------------
->	<div>
->       {/* 向路由组件传递params参数 */}
->       <Link to={`/home/message/detail/${msgObj.id}/${msgObj.title}`}>{msgObj.title}</Link>
->       <hr />
->       {/* 声明接收params参数 */}
->       <Route path="/home/message/detail/:id/:title" component={Detail} />
->  </div>
->	--------------------------------接受参数:子组件-----------------------------------------------------------
->    const {id,title} = this.props.match.params
+>-------------------------------发送参数:父组件----------------------------------------------
+><div>
+>     {/* 向路由组件传递params参数 */}
+> <Link to={`/home/message/detail/${msgObj.id}/${msgObj.title}`}>{msgObj.title}</Link>
+> <hr />
+> {/* 声明接收params参数 */}
+> <Route path="/home/message/detail/:id/:title" component={Detail} />
+> </div>
+>    --------------------------------接受参数:子组件-----------------------------------------------------------
+>         const {id,title} = this.props.match.params
 >```
 
 ### Ⅱ-search参数
@@ -304,45 +304,50 @@
 >2. 注册路由(`无需声明`，正常注册即可)：`<Route path="/demo/test" component={Test}/>`
 >3. 接收参数：this.props.location.search
 >4. 备注：获取到的search是`urlencoded编码字符串`，需要`借助querystring解析`
+>5. 引入querystring：`import qs from 'querystring'`  react脚手架自带的
+>   1. ==qs.stringfy(对象)  把一个对象转换成urlencoded编码==
+>   2. ==qs.parse(字符串)  把一个urlencoded编码的字符串转成对象==
+>
 >
 >```jsx
->	-------------------------------发送参数:父组件----------------------------------------------
->	<div>
->      	{/* 向路由组件传递search参数 */}
->		<Link to={`/home/message/detail/?id=${msgObj.id}&title=${msgObj.title}`}>{msgObj.title}</Link>
->       <hr />
->     	{/* search参数无需声明接收，正常注册路由即可 */}
->		<Route path="/home/message/detail" component={Detail}/>
->  </div>
->	--------------------------------接受参数:子组件-----------------------------------------------------------
->    import qs from 'querystring'
->	// 接收search参数
->	const {search} = this.props.location
->	const {id,title} = qs.parse(search.slice(1))
+>-------------------------------发送参数:父组件----------------------------------------------
+><div>
+>    {/* 向路由组件传递search参数 */}
+><Link to={`/home/message/detail/?id=${msgObj.id}&title=${msgObj.title}`}>{msgObj.title}</Link>
+><hr />
+>{/* search参数无需声明接收，正常注册路由即可 */}
+><Route path="/home/message/detail" component={Detail}/>
+></div>
+>    --------------------------------接受参数:子组件-----------------------------------------------------------
+>        import qs from 'querystring'
+>// 接收search参数
+>const {search} = this.props.location
+>const {id,title} = qs.parse(search.slice(1))
 >```
 
 ### Ⅲ-state参数
 
+>1. 路由的`state`就是把`to`写成一个对象
 >1. 路由链接(携带参数)：[`<Link to={{pathname:'/demo/test',state:{name:'tom',age:18}}}>详情</Link>`]
 >2. 注册路由(无需声明，正常注册即可)：[`<Route path="/demo/test" component={Test}/>`]
 >3. 接收参数：this.props.location.state
 >
->  - 备注：使用`BrowserRouter`刷新才可以`保留住参数`,使用`HashRouter`刷新后state将会没有`history`来保存参数
->  - 子组件接受参数时`const {id,title} = this.props.location.state || {}` ,后面添加`||{}`是防止使用`HashRouter`后state为undefined时报错
+> - 备注：使用`BrowserRouter`刷新才可以`保留住参数`,路由的跳转一直在操作浏览器的history,使用`HashRouter`刷新后state将会没有`history`来保存参数
+> - 子组件接受参数时`const {id,title} = this.props.location.state || {}` ,后面添加`||{}`是防止使用`HashRouter`后state为undefined时报错
 >
 >```jsx
->	-------------------------------发送参数:父组件----------------------------------------------
->	<div>
->      	{/* 向路由组件传递state参数 */}
->		<Link to={{pathname:'/home/message/detail',state:{id:msgObj.id,title:msgObj.title}}}>{msgObj.title}</Link>
+>-------------------------------发送参数:父组件----------------------------------------------
+><div>
+>    {/* 向路由组件传递state参数 */}
+><Link to={{pathname:'/home/message/detail',state:{id:msgObj.id,title:msgObj.title}}}>{msgObj.title}</Link>
 >
->       <hr />
->     	{/* state参数无需声明接收，正常注册路由即可 */}
->		<Route path="/home/message/detail" component={Detail}/>
->  </div>
->	--------------------------------接受参数:子组件-----------------------------------------------------------
->    // 接收state参数,后面添加`||{}`是防止使用`HashRouter`后state为undefined时报错
->	const {id,title} = this.props.location.state || {}
+><hr />
+>{/* state参数无需声明接收，正常注册路由即可 */}
+><Route path="/home/message/detail" component={Detail}/>
+></div>
+>    --------------------------------接受参数:子组件-----------------------------------------------------------
+>        // 接收state参数,后面添加`||{}`是防止使用`HashRouter`后state为undefined时报错
+>        const {id,title} = this.props.location.state || {}
 >```
 
 ## 十一、编程式路由导航
@@ -471,20 +476,20 @@
 >import React, { Component } from 'react'
 >import { withRouter } from 'react-router-dom'
 >class Header extends Component {
-> back = () => { this.props.history.goBack()}
-> forward = () => {this.props.history.goForward()}
-> go = () => { this.props.history.go(-2)}
-> render() {
->   console.log('Header组件收到的props是', this.props);
->   return (
->     <div className="page-header">
->       <h2>React Router Demo</h2>
->       <button onClick={this.back}>回退</button>&nbsp;
->       <button onClick={this.forward}>前进</button>&nbsp;
->       <button onClick={this.go}>go</button>
->     </div>
->   )
-> }
+>     back = () => { this.props.history.goBack()}
+>     forward = () => {this.props.history.goForward()}
+>     go = () => { this.props.history.go(-2)}
+>     render() {
+>         console.log('Header组件收到的props是', this.props);
+>         return (
+>             <div className="page-header">
+>                 <h2>React Router Demo</h2>
+>                 <button onClick={this.back}>回退</button>&nbsp;
+>                 <button onClick={this.forward}>前进</button>&nbsp;
+>                 <button onClick={this.go}>go</button>
+>             </div>
+>         )
+>     }
 >}
 >export default withRouter(Header)
 >```
