@@ -300,7 +300,7 @@
 
 ### Ⅱ-search参数
 
->1. 路由链接(携带参数)：`<Link to='/demo/test?name=tom&age=18'}>详情</Link>`
+>1. 路由链接(携带参数)：`<Link to='/demo/test?name=tom&age=18'>详情</Link>`
 >2. 注册路由(`无需声明`，正常注册即可)：`<Route path="/demo/test" component={Test}/>`
 >3. 接收参数：this.props.location.search
 >4. 备注：获取到的search是`urlencoded编码字符串`，需要`借助querystring解析`
@@ -336,18 +336,18 @@
 > - 子组件接受参数时`const {id,title} = this.props.location.state || {}` ,后面添加`||{}`是防止使用`HashRouter`后state为undefined时报错
 >
 >```jsx
->-------------------------------发送参数:父组件----------------------------------------------
+>-------发送参数:父组件
 ><div>
->    {/* 向路由组件传递state参数 */}
+> {/* 向路由组件传递state参数 */}
 ><Link to={{pathname:'/home/message/detail',state:{id:msgObj.id,title:msgObj.title}}}>{msgObj.title}</Link>
 >
 ><hr />
 >{/* state参数无需声明接收，正常注册路由即可 */}
 ><Route path="/home/message/detail" component={Detail}/>
 ></div>
->    --------------------------------接受参数:子组件-----------------------------------------------------------
->        // 接收state参数,后面添加`||{}`是防止使用`HashRouter`后state为undefined时报错
->        const {id,title} = this.props.location.state || {}
+> -------接受参数:子组件
+> // 接收state参数,后面添加`||{}`是防止使用`HashRouter`后state为undefined时报错
+> const {id,title} = this.props.location.state || {}
 >```
 
 ## 十一、编程式路由导航

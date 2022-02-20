@@ -10,7 +10,7 @@
 
 ### Ⅱ-redux是什么
 
->1. redux是一个专门用于做`状态管理的JS库`(不是react插件库)。
+>1. redux是一个专门用于做==状态管理==的JS库(不是react插件库)。
 >
 >2. 它可以用在react, angular, vue等项目中, 但基本与react配合使用。
 >
@@ -26,7 +26,7 @@
 
 ### Ⅳ-redux工作流程
 
->![React系统学习_Redux工作流程原理图](C:/Users/pengcheng/Desktop/A_React%25E7%25B3%25BB%25E7%25BB%259F%25E5%25AD%25A6%25E4%25B9%25A0%25E7%25AC%2594%25E8%25AE%25B0%25E4%25B8%25AD%25E7%259A%2584%25E5%259B%25BE%25E7%2589%2587/React%25E7%25B3%25BB%25E7%25BB%259F%25E5%25AD%25A6%25E4%25B9%25A0_Redux%25E5%25B7%25A5%25E4%25BD%259C%25E6%25B5%2581%25E7%25A8%258B%25E5%258E%259F%25E7%2590%2586%25E5%259B%25BE.png)
+>![React系统学习_Redux工作流程原理图](https://s2.loli.net/2022/02/20/d3WFJvSqw6KzUos.png)
 
 ## 二、redux的三个核心概念
 
@@ -45,7 +45,7 @@
 ### Ⅱ-reducer
 
 >1. 用于初始化状态、加工状态。
->2. 加工时，根据旧的state和action， 产生新的state的`纯函数(以下为纯函数概念)``
+>2. 加工时，根据旧的state和action， 产生新的state的`纯函数(以下为纯函数概念)`
 >
 >  - ``纯函数:`一类特别的函数: 只要是同样的输入(实参)，必定得到同样的输出(返回)
 >  - 必须遵守以下一些约束 
@@ -368,8 +368,8 @@
 > `注意`:在`reducer`中如果preState是一个数组,不可以用`push、unshift`等方法进行修改,如此修改并不会修改其引用,所以`diff`并不会判定其发生改变,`导致页面无法自动重新渲染`
 >
 > ```js
-> 	//preState.unshift(data) //此处不可以这样写，这样会导致preState被改写了，personReducer就不是纯函数了。
-> 	return [data,...preState]
+> //preState.unshift(data) //此处不可以这样写，这样会导致preState被改写了，personReducer就不是纯函数了。
+> return [data,...preState]
 > ```
 
 ### 1、求和案例_redux精简版
@@ -380,9 +380,9 @@
 >
 > ​      -redux
 >
-> ​       -store.js
+> ​      -store.js
 >
-> ​       -count_reducer.js
+> ​      -count_reducer.js
 >
 > (3).store.js：
 >
@@ -391,6 +391,16 @@
 > ​     2).createStore调用时要传入一个为其服务的reducer
 >
 > ​     3).记得暴露store对象
+>
+> ```js
+> import {createStore} from 'redux'
+> //引入为Count组件服务的reducer
+> import countReducer from './count_reducer'
+> //暴露store
+> export default createStore(countReducer)
+> ```
+>
+> 
 >
 > (4).count_reducer.js：
 >
@@ -404,6 +414,26 @@
 >
 > ​         传递的action是:{type:'@@REDUX/INIT_a.2.b.4}
 >
+> ```js
+> import {INCREMENT,DECREMENT} from './constant'
+> 
+> const initState = 0 //初始化状态
+> export default function countReducer(preState=initState,action){
+> 	// console.log(preState);
+> 	//从action对象中获取：type、data
+> 	const {type,data} = action
+> 	//根据type决定如何加工数据
+> 	switch (type) {
+> 		case INCREMENT: //如果是加
+> 			return preState + data
+> 		case DECREMENT: //若果是减
+> 			return preState - data
+> 		default:
+> 			return preState
+> 	}
+> }
+> ```
+>
 > (5).在index.js中监测store中状态的改变，一旦发生改变重新渲染<App/>
 >
 > ​    备注：redux只负责管理状态，至于状态的改变驱动着页面的展示，要靠我们自己写
@@ -415,6 +445,18 @@
 >  1.count_action.js 专门用于创建action对象
 >
 >  2.constant.js 放置容易写错的type值
+>
+>  ```js
+>  export const INCREMENT = 'increment'
+>  export const DECREMENT = 'decrement'
+>  
+>  import {INCREMENT,DECREMENT} from './constant'
+>  
+>  export const createIncrementAction = data => ({type:INCREMENT,data})
+>  export const createDecrementAction = data => ({type:DECREMENT,data})
+>  ```
+>
+>  
 
 ### 3、求和案例_redux异步action版
 
@@ -431,12 +473,30 @@
 >   ​     3).异步任务有结果后，分发一个同步的action去真正操作数据。
 >
 >   (4).备注：异步action不是必须要写的，完全可以自己等待异步任务的结果了再去分发同步action。
+>
+>   ```js
+>   //同步action，就是指action的值为Object类型的一般对象
+>   export const createIncrementAction = data => ({type:INCREMENT,data})
+>   
+>   //异步action，就是指action的值为函数,异步action中一般都会调用同步action，异步action不是必须要用的。
+>   export const createIncrementAsyncAction = (data,time) => {
+>   	return (dispatch)=>{
+>   		setTimeout(()=>{
+>   			dispatch(createIncrementAction(data))
+>   		},time)
+>   	}
+>   }
+>   //使用
+>   store.dispatch(createIncrementAsyncAction(value * 1, 1000))
+>   ```
+>
+>   
 
 ### 4、求和案例_react-redux基本使用
 
 >   (1).明确两个概念：
 >
->   ​      1).UI组件:不能使用任何redux的api，只负责页面的呈现、交互等。
+>   ​      1).UI组件：不能使用任何redux的api，只负责页面的呈现、交互等。
 >
 >   ​      2).容器组件：负责和redux通信，将结果交给UI组件。
 >
@@ -444,13 +504,74 @@
 >
 >   ​       connect(mapStateToProps,mapDispatchToProps)(UI组件)
 >
->   ​        -mapStateToProps:映射状态，返回值是一个对象
+>   ​        `mapStateToProps`: 映射状态，返回值是一个对象，返回的对象中的key就作为传递给UI组件props的key,value就作为传递给UI组件props的value
 >
->   ​        -mapDispatchToProps:映射操作状态的方法，返回值是一个对象
+>   ```js
+>   function mapStateToProps(state){
+>   	return {count:state}
+>   }
+>   ```
+>
+>   ​        `mapDispatchToProps`: 映射操作状态的方法，返回值是一个对象，返回的对象中的key就作为传递给UI组件props的key,value就作为传递给UI组件props的value
+>
+>   ```js
+>   function mapDispatchToProps(dispatch){
+>   	return {
+>   		jia:number => dispatch(createIncrementAction(number)),
+>   		jian:number => dispatch(createDecrementAction(number)),
+>   		jiaAsync:(number,time) => dispatch(createIncrementAsyncAction(number,time)),
+>   	}
+>   }
+>   ```
 >
 >   (3).备注1：容器组件中的store是靠props传进去的，而不是在容器组件中直接引入
 >
->   (4).备注2：mapDispatchToProps，也可以是一个对象
+>   ```js
+>   import Count from './containers/Count'
+>   import store from './redux/store'
+>   <Count store={store} />
+>   ```
+>
+>   `containers/Count.js`
+>
+>   ```js
+>   import CountUI from 'UI组件的路径'
+>   
+>   //引入action
+>   import {
+>   	createIncrementAction,
+>   	createDecrementAction,
+>   	createIncrementAsyncAction
+>   } from '../../redux/count_action'
+>   
+>   import {connect} from 'react-redux'
+>   
+>   export default connect(mapStateToProps,mapDispatchToProps)(CountUI)
+>   ```
+>
+>   (4).备注2：mapDispatchToProps也可以是一个对象
+>
+>   ```js
+>   export default connect(
+>       state => ({count:state}),
+>   
+>       //mapDispatchToProps的一般写法
+>       /* dispatch => ({
+>   		jia:number => dispatch(createIncrementAction(number)),
+>   		jian:number => dispatch(createDecrementAction(number)),
+>   		jiaAsync:(number,time) => dispatch(createIncrementAsyncAction(number,time)),
+>   	}) */
+>   
+>       //mapDispatchToProps的简写
+>       {
+>           jia:createIncrementAction,
+>           jian:createDecrementAction,
+>           jiaAsync:createIncrementAsyncAction,
+>       }
+>   )(Count)
+>   ```
+
+
 
 ### 5、求和案例_react-redux优化
 
@@ -458,7 +579,7 @@
 >
 >   (2).无需自己给容器组件传递store，给<App/>包裹一个<Provider store={store}>即可。
 >
->   (3).使用了react-redux后也不用再自己检测redux中状态的改变了，容器组件可以自动完成这个工作。
+>   (3).使用了react-redux后也不用再自己检测redux中状态的改变了，容器组件可以自动完成这个工作。不用手写`store.subscribe(()=>{ReactDOM.render(xxx,xxx)})`
 >
 >   (4).mapDispatchToProps也可以简单的写成一个对象
 >
