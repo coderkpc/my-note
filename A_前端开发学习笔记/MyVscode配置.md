@@ -179,6 +179,38 @@ File >> Preferences >> Keyboard Shprtcuts >>右上角+ 代码模式>>复制以�
 
 > 一个提供假数据的插件
 
+27. Template String Converter
+
+> 在字符串中打$自动触发模板字符串
+
+28. Parameter Hints
+
+> 提示函数的参数类型
+
+29. Highlight Matching Tag
+
+> 高亮匹配的标签
+
+30. vue-component
+
+> 自动提示找到的组件，自动引入，自动注册
+
+31. React Style Helper
+
+> 方便您在 JSX 中更快速地编写内联样式，并对 CSS、LESS、SASS 等样式文件提供强大的辅助开发功能。对 React 和 Rax 应用友好。
+
+32. vscode-styled-components
+
+> 在js文件中写样式有智能提示
+
+33. CSS Initial Value
+
+> 提示css属性的初始值
+
+34. A-super-translate
+
+> 翻译插件
+
 ## 三、settings.json
 
 ```json
